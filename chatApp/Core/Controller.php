@@ -9,6 +9,12 @@
 
 class Controller
 {
+    public $db = null;
+
+    public function __construct()
+    {
+        $this->db = DB::dbHandle();
+    }
     protected function model($model)
     {
         require_once '../chatApp/models/' . $model . '.php';

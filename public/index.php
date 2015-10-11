@@ -8,6 +8,7 @@
 require_once '../chatApp/init.php';
 
 $app = new App;
+
 ?>
 <!doctype html>
 <html lang="en">
@@ -23,6 +24,7 @@ $app = new App;
     <input class="js-username" type="text" name="username" id="username" value="">
     <input class="js-token" type="hidden" name="token" value="">
     <input class="js-submit" type="submit" value="submit">
+    <p class="error"></p>
 </form>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>

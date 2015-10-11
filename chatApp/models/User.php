@@ -9,5 +9,16 @@
 
 class User
 {
-    public $name;
+    public function login()
+    {
+
+    }
+
+    public function register()
+    {
+
+    }
+
+
+
 }
