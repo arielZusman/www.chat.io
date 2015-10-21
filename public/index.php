@@ -5,6 +5,7 @@
  * Date: 05/10/2015
  * Time: 16:42
  */
+session_start();
 require_once '../chatApp/init.php';
 
 $app = new App;
@@ -19,7 +20,7 @@ $app = new App;
 </head>
 <body>
 
-<form class="js-form" action="" method="post">
+<form class="js-form" action="http://www.chat.io/public/user/login" method="post">
     <p>Register new user</p>
     <label for="username">User Name:</label>
     <input class="js-username" type="text" name="username" id="username" value="">

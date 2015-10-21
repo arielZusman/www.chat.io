@@ -14,8 +14,10 @@ class Session
     }
     public static function put($name, $value)
     {
-        session_start();
-        return $_SESSION[$name] = $value;
+//        session_start();
+        $_SESSION[$name] = $value;
+//        session_write_close();
+        return $_SESSION[$name];
     }
 
     public static function delete($name)
