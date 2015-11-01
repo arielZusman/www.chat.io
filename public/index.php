@@ -1,36 +1,74 @@
 <?php
-/**
- * Created by www.chat.io.
- * User: ariel.zusman
- * Date: 05/10/2015
- * Time: 16:42
- */
-session_start();
-require_once '../chatApp/init.php';
+// session_start();
+// require_once '../chatApp/init.php';
 
-$app = new App;
+// $app = new App;
 
 ?>
 <!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Chat</title>
-    <link rel="stylesheet" href="css/main.css">
+	<meta charset="UTF-8">
+	<title>Chat</title>
+	<link rel="stylesheet" href="css/main.css">
 </head>
 <body>
+	<main class="main clearfix">
+        <nav class="nav">
+            <a href="#" class="btn btn--login">green</a>
+            <a href="#" class="btn btn--newUser">green</a>
+            <a href="#" class="btn btn--logout">green</a>
+        </nav>
+        <ul class="users">
+           <li class="user__item userID-45">ArielZ</li>
+           <li class="user__item userID-50 is-online">Moshe</li>
+           <li class="user__item userID-5 has-newMessage">Dani</li>
+           <li class="user__item userID-47">Sage</li>
+        </ul>
+        <div class="conversation">
+            <div class="message-wrap">
+                <div class="message message--me">hi there</div>
+            </div>
+            <div class="message-wrap">
+                <div class="message message--other">whats up</div>
+            </div>
+            <div class="message-wrap">
+                <div class="message message--me">hi there</div>
+            </div>
+            <div class="message-wrap">
+                <div class="message message--other">whats up</div>
+            </div>
+            <div class="message-wrap">
+                <div class="message message--me">hi there</div>
+            </div>
+            <div class="message-wrap">
+                <div class="message message--other">whats up</div>
+            </div>
+            <div class="message-wrap">
+                <div class="message message--me">hi there</div>
+            </div>
+            <div class="message-wrap">
+                <div class="message message--other">whats up</div>
+            </div>
+            <div class="message-wrap">
+                <div class="message message--me">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam aut consectetur, debitis dignissimos ducimus est facere facilis ipsa iusto minima neque nulla obcaecati perferendis quis quisquam soluta temporibus velit, voluptatem!</div>
+            </div>
+            <div class="message-wrap">
+                <div class="message message--other">whats up</div>
+            </div>
 
-<form class="js-form" action="http://www.chat.io/public/user/login" method="post">
-    <p>Register new user</p>
-    <label for="username">User Name:</label>
-    <input class="js-username" type="text" name="username" id="username" value="">
-    <input class="js-token" type="hidden" name="token" value="<?php echo Token::generate(); ?>">
-    <input class="js-submit" type="submit" value="submit">
-    <p class="error"></p>
-</form>
-<?php var_dump($_SESSION);?>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-<script>window.jQuery || document.write('<script src="js/jquery-2.1.4.min.js"><\/script>')</script>
-<script src="js/main.js"></script>
+        </div>
+
+        <form action="" method="post" class="loginForm">
+            <label for="username">Enter username:</label>
+            <input type="text" name="username" value="" id="username">
+            <input class="btn btn--login" type="submit" value="Login">
+        </form>
+
+    </main>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script> 
+	<script>window.jQuery || document.write('<script src="js/jquery-2.1.4.min.js"><\/script>');</script>
+	<script src="js/main.js"></script>
 </body>
 </html>

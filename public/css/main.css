@@ -157,6 +157,12 @@ ul {
     float: right;
 }
 
+.loginForm {
+    float: left;
+    clear: both;
+    margin-top: 25px;
+}
+
 /*styling for buttons*/
 
 .btn {
