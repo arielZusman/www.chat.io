@@ -4,6 +4,50 @@
 		"selected_items":
 		[
 			[
+				"conf",
+				"conf"
+			],
+			[
+				"realp",
+				"realpath()	standard Function"
+			],
+			[
+				"unset",
+				"unset()	Language Construct"
+			],
+			[
+				"ses",
+				"session_destroy"
+			],
+			[
+				"hea",
+				"headerArr"
+			],
+			[
+				"a",
+				"action($cmd)	mixed"
+			],
+			[
+				"call_user",
+				"call_user_func_array"
+			],
+			[
+				"Co",
+				"Controller	Controller"
+			],
+			[
+				"array_k",
+				"array_key_exists"
+			],
+			[
+				"json",
+				"json_decode"
+			],
+			[
+				"sub",
+				"submit	.submit()"
+			],
+			[
 				"user",
 				"userID"
 			],
@@ -148,10 +192,6 @@
 				"array"
 			],
 			[
-				"json",
-				"json_encode"
-			],
-			[
 				"php",
 				"phpinfo"
 			],
@@ -216,77 +256,50 @@
 	"buffers":
 	[
 		{
-			"file": "public/chatServer2.php",
+			"file": "Vagrantfile",
 			"settings":
 			{
-				"buffer_size": 6298,
+				"buffer_size": 683,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "public/css/main.css",
+			"file": "src/public/js/main.js",
 			"settings":
 			{
-				"buffer_size": 7460,
+				"buffer_size": 1476,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"contents": "<?php\nrequire_once \"app/bootstarp.php\";\n//// check if username alreay exists\n//$db = Core\\DB::dbHandle();\n//$query = \"SELECT * FROM users WHERE user_name = ? LIMIT 1\";\n//\n//if (isset($_POST['username'])) {\n//    $stmt = $db->query($query, array($_POST['username']) );\n//\n//    if( !count($stmt->results() ) ) {\n//        $query = \"INSERT INTO users (username, is_online) VALUES ( ? , 1)\";\n//        $stmt->query($query, array('danigg'));\n//    }\n//}\n//unset($_POST);\n//var_dump($stmt);\n\n\n\n\n?>\n<!doctype html>\n<html lang=\"en\">\n<head>\n    <meta charset=\"UTF-8\">\n    <title>Chat App</title>\n    <link rel=\"stylesheet\" href=\"css/main.css\">\n    <script src=\"https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js\"></script>\n    <script>window.jQuery || document.write('<script src=\"js/jquery-2.1.4.min.js\"><\\/script>')</script>\n    <script src=\"js/main.js\"></script>\n</head>\n<body>\n\n    <form class=\"js-newUserForm\" action=\"\" method=\"post\">\n        <label for=\"username\">New User:</label>\n        <input type=\"text\" id=\"username\" name=\"username\" value=\"\" required=\"required\" placeholder=\"user name\">\n        <p class=\"error\"></p>\n        <input type=\"hidden\" name=\"action\" value=\"register\">\n        <input type=\"submit\" value=\"submit\">\n    </form>\n\n\n\n    <main class=\"main clearfix\">\n        <ul class=\"users\">\n           <li class=\"user__item userID-45\">ArielZ</li>\n           <li class=\"user__item userID-50 is-online\">Moshe</li>\n           <li class=\"user__item userID-5 has-newMessage\">Dani</li>\n           <li class=\"user__item userID-47\">Sage</li>\n        </ul>\n        <div class=\"conversation\">\n            <div class=\"message-wrap\">\n                <div class=\"message message--me\">hi there</div>\n            </div>\n            <div class=\"message-wrap\">\n                <div class=\"message message--other\">whats up</div>\n            </div>\n            <div class=\"message-wrap\">\n                <div class=\"message message--me\">hi there</div>\n            </div>\n            <div class=\"message-wrap\">\n                <div class=\"message message--other\">whats up</div>\n            </div>\n            <div class=\"message-wrap\">\n                <div class=\"message message--me\">hi there</div>\n            </div>\n            <div class=\"message-wrap\">\n                <div class=\"message message--other\">whats up</div>\n            </div>\n            <div class=\"message-wrap\">\n                <div class=\"message message--me\">hi there</div>\n            </div>\n            <div class=\"message-wrap\">\n                <div class=\"message message--other\">whats up</div>\n            </div>\n            <div class=\"message-wrap\">\n                <div class=\"message message--me\">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam aut consectetur, debitis dignissimos ducimus est facere facilis ipsa iusto minima neque nulla obcaecati perferendis quis quisquam soluta temporibus velit, voluptatem!</div>\n            </div>\n            <div class=\"message-wrap\">\n                <div class=\"message message--other\">whats up</div>\n            </div>\n\n        </div>\n        <form action=\"\" method=\"post\" id=\"loginForm\">\n            <label for=\"username\">Enter username:</label>\n            <input></form>\n        </form>\n    </main>\n\n\n</body>\n</html>",
-			"file": "/C/xampp/htdocs/chat.dev/index.php",
-			"file_size": 3421,
-			"file_write_time": 130885135114594463,
+			"file": "provision/setup.sh",
 			"settings":
 			{
-				"buffer_size": 3267,
+				"buffer_size": 1502,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "provision/chat.conf",
+			"settings":
+			{
+				"buffer_size": 642,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "public/js/main.js",
+			"file": "provision/chatServer.conf",
 			"settings":
 			{
-				"buffer_size": 1134,
+				"buffer_size": 604,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "/C/xampp/htdocs/PHP-Websockets/users.php",
+			"file": "src/core/init.php",
 			"settings":
 			{
-				"buffer_size": 391,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "public/User.php",
-			"settings":
-			{
-				"buffer_size": 197,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "chatApp/Core/app.php",
-			"settings":
-			{
-				"buffer_size": 1081,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "public/websock.php",
-			"settings":
-			{
-				"buffer_size": 24097,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "public/telnet.php",
-			"settings":
-			{
-				"buffer_size": 3672,
+				"buffer_size": 111,
 				"line_ending": "Windows"
 			}
 		}
@@ -299,9 +312,41 @@
 	"command_palette":
 	{
 		"height": 392.0,
-		"last_filter": "rei",
+		"last_filter": "ru",
 		"selected_items":
 		[
+			[
+				"ru",
+				"Set Syntax: Ruby"
+			],
+			[
+				"clo",
+				"File: Close All"
+			],
+			[
+				"rub",
+				"Set Syntax: Ruby"
+			],
+			[
+				"all",
+				"File: Close All"
+			],
+			[
+				"ren",
+				"ANF: Rename File"
+			],
+			[
+				"conf",
+				"Set Syntax: Apache Conf"
+			],
+			[
+				"inst",
+				"Package Control: Install Package"
+			],
+			[
+				"ruby",
+				"Set Syntax: Ruby"
+			],
 			[
 				"rei",
 				"Indentation: Reindent Lines"
@@ -329,10 +374,6 @@
 			[
 				"remov",
 				"Package Control: Remove Package"
-			],
-			[
-				"inst",
-				"Package Control: Install Package"
 			],
 			[
 				"dis",
@@ -373,10 +414,6 @@
 			[
 				"en",
 				"Package Control: Enable Package"
-			],
-			[
-				"all",
-				"File: Close All"
 			],
 			[
 				"xdeb",
@@ -455,15 +492,11 @@
 				"File: Close All"
 			],
 			[
-				"clo",
-				"File: Close All"
-			],
-			[
 				"refre",
 				"Project: Refresh Folders"
 			]
 		],
-		"width": 448.0
+		"width": 416.0
 	},
 	"console":
 	{
@@ -485,20 +518,61 @@
 	"expanded_folders":
 	[
 		"/C/xampp/htdocs/www.chat.io",
-		"/C/xampp/htdocs/www.chat.io/chatApp",
-		"/C/xampp/htdocs/www.chat.io/chatApp/Core",
-		"/C/xampp/htdocs/www.chat.io/chatApp/models",
-		"/C/xampp/htdocs/www.chat.io/chatApp/views",
-		"/C/xampp/htdocs/www.chat.io/chatApp/views/home",
-		"/C/xampp/htdocs/www.chat.io/public"
+		"/C/xampp/htdocs/www.chat.io/src",
+		"/C/xampp/htdocs/www.chat.io/src/core"
 	],
 	"file_history":
 	[
+		"/C/xampp/htdocs/www.chat.io/provision/hostfile.conf",
+		"/C/xampp/htdocs/www.chat.io/setup.sh",
+		"/C/xampp/htdocs/www.chat.io/Vagrantfile",
+		"/C/xampp/htdocs/www.chat.io/src/core/logs/worker.log",
+		"/C/xampp/htdocs/www.chat.io/src/public/index.php",
+		"/C/xampp/htdocs/www.chat.io/.gitignore",
+		"/C/xampp/htdocs/www.chat.io/src/public/js/main.js",
+		"/C/xampp/htdocs/www.chat.io/src/core/chatServer2.php",
+		"/C/xampp/htdocs/www.chat.io/hostfile.conf",
+		"/C/xampp/htdocs/www.chat.io/.vagrant/machines/default/virtualbox/synced_folders",
+		"/C/xampp/htdocs/www.chat.io/public/js/main.js",
+		"/C/xampp/htdocs/www.chat.io/html/index.html",
+		"/C/xampp/htdocs/www.chat.io/provision/config/deamon.conf",
+		"/C/xampp/htdocs/www.chat.io/provision/hostfile",
+		"/C/xampp/apache/conf/httpd.conf",
+		"/C/xampp/apache/conf/extra/httpd-proxy.conf",
+		"/C/xampp/htdocs/www.chat.io/src/core/init.php",
+		"/C/xampp/htdocs/www.chat.io/provision/config/nginx_vhost",
+		"/C/xampp/htdocs/www.chat.io/chatApp/core/chatServer2.php",
+		"/C/xampp/htdocs/www.chat.io/src/index.php",
+		"/C/xampp/htdocs/www.chat.io/chatApp/index.php",
+		"/C/xampp/htdocs/www.chat.io/php.txt",
 		"/C/xampp/htdocs/www.chat.io/public/index.php",
+		"/C/xampp/htdocs/www.chat.io/index.php",
+		"/C/Users/ariel.zusman/Documents/vagrant-local/chat/bootstrap.sh",
+		"/C/xampp/htdocs/www.chat.io/bootsrap.sh",
+		"/C/Users/ariel.zusman/Documents/vagrant-local/chat/Vagrantfile",
+		"/C/xampp/htdocs/www.chat.io/chatApp/core/init.php",
+		"/C/xampp/htdocs/www.chat.io/public/websock.php",
+		"/C/xampp/htdocs/www.chat.io/public/telnet.php",
+		"/C/xampp/htdocs/www.chat.io/public/chatServer2.php",
+		"/C/xampp/htdocs/www.chat.io/public/Controller.php",
+		"/C/xampp/htdocs/www.chat.io/public/init.php",
+		"/C/xampp/htdocs/www.chat.io/chatApp/Core/app.php",
+		"/C/xampp/htdocs/chat.dev/js/main.js",
+		"/C/xampp/htdocs/PHP-Websockets/users.php",
+		"/C/xampp/htdocs/www.chat.io/public/User.php",
+		"/C/xampp/htdocs/chat.dev/index.php",
+		"/C/xampp/htdocs/chat.dev/app/bootstarp.php",
+		"/C/xampp/htdocs/chat.dev/app/Core/User.php",
+		"/C/xampp/htdocs/chat.dev/app/Core/Router.php",
+		"/C/xampp/htdocs/chat.dev/app/Core/DB.php",
+		"/C/xampp/htdocs/www.chat.io/chatApp/Core/db.php",
+		"/C/xampp/htdocs/www.chat.io/chatApp/models/user.php",
+		"/C/xampp/htdocs/www.chat.io/phpclass.sublime-classdb",
+		"/C/xampp/htdocs/www.chat.io/.phpintel/index",
+		"/C/xampp/htdocs/www.chat.io/.phpintel/f96f4ba5bb75f30fe4cfb102e560453b",
+		"/C/xampp/htdocs/www.chat.io/public/css/main.css",
 		"/C/xampp/htdocs/www.chat.io/public/chatServer.php",
 		"/C/xampp/htdocs/www.chat.io/public/server.php",
-		"/C/xampp/htdocs/www.chat.io/public/js/main.js",
-		"/C/xampp/htdocs/www.chat.io/public/User.php",
 		"/C/xampp/htdocs/www.chat.io/public/Console.php",
 		"/C/Users/ariel.zusman/AppData/Roaming/Sublime Text 3/Packages/Origami/Default (Windows).sublime-keymap",
 		"/C/Users/ariel.zusman/AppData/Roaming/Sublime Text 3/Packages/Origami/Origami.sublime-settings",
@@ -516,8 +590,6 @@
 		"/C/xampp/htdocs/PHP-Websockets/websockets.php",
 		"/C/xampp/htdocs/PHP-Websockets/client.html",
 		"/C/xampp/htdocs/www.chat.io/public/server1.php",
-		"/C/xampp/htdocs/PHP-Websockets/users.php",
-		"/C/xampp/htdocs/www.chat.io/public/websock.php",
 		"/C/Users/ariel.zusman/Downloads/code/server.php",
 		"/C/Users/ariel.zusman/Documents/emacs/share/applications/emacs.desktop",
 		"/C/Users/ariel.zusman/AppData/Roaming/NuGet/NuGet.Config",
@@ -526,7 +598,6 @@
 		"/C/Users/ariel.zusman/AppData/Local/Haroopad/Themes/editor/default.css",
 		"/C/Users/ariel.zusman/AppData/Roaming/Sublime Text 3/Packages/phpfmt/message",
 		"/C/xampp/htdocs/www.chat.io/public/test.php",
-		"/C/xampp/htdocs/www.chat.io/phpclass.sublime-classdb",
 		"/C/Users/ariel.zusman/AppData/Roaming/Sublime Text 3/Packages/Project PHP ClassBrowser/ProjectPHPClassBrowser.sublime-settings",
 		"/C/Users/ariel.zusman/Documents/work/mails/mailer.html",
 		"/C/xampp/tmp/sess_hie4sfolojea2baipsdhbkohm4",
@@ -546,7 +617,6 @@
 		"/C/xampp/htdocs/logger.dev/classes/DB.php",
 		"/C/Users/ariel.zusman/Documents/vagrant-local/chat/chat/application/core/controller.php",
 		"/C/Users/ariel.zusman/Documents/vagrant-local/chat/chat/application/controller/home.php",
-		"/C/xampp/htdocs/chat.dev/app/Core/DB.php",
 		"/C/xampp/htdocs/logger.dev/login.php",
 		"/C/xampp/htdocs/logger.dev/changepassword.php",
 		"/C/xampp/htdocs/logger.dev/update.php",
@@ -555,16 +625,12 @@
 		"/C/Users/ariel.zusman/Documents/vagrant-local/chat/chat/application/view/_templates/header.php",
 		"/C/Users/ariel.zusman/Documents/vagrant-local/chat/chat/public/index.php",
 		"/C/xampp/apache/conf/extra/httpd-vhosts.conf",
-		"/C/xampp/htdocs/chat.dev/app/bootstarp.php",
-		"/C/xampp/htdocs/chat.dev/index.php",
 		"/C/Users/ariel.zusman/Documents/vagrant-local/chat/chat/application/core/application.php",
-		"/C/Users/ariel.zusman/Documents/vagrant-local/chat/Vagrantfile",
 		"/C/Users/ariel.zusman/Documents/vagrant-local/chat/chat/public/.htaccess",
 		"/C/Users/ariel.zusman/Documents/vagrant-local/chat/chat/.htaccess",
 		"/C/Users/ariel.zusman/Documents/vagrant-local/chat/chat/_vagrant/bootstrap.sh",
 		"/C/Users/ariel.zusman/Documents/vagrant-local/chat/chat/application/config/config.php",
 		"/C/Users/ariel.zusman/Documents/vagrant-local/chat/chat/application/view/_templates/footer.php",
-		"/C/Users/ariel.zusman/Documents/vagrant-local/chat/bootstrap.sh",
 		"/C/xampp/htdocs/chat.dev/app/inc/newuser.php",
 		"/C/xampp/htdocs/logger.dev/classes/Input.php",
 		"/C/xampp/htdocs/chat.dev/.htaccess",
@@ -576,7 +642,6 @@
 		"/C/xampp/htdocs/chat.dev/public/index.php",
 		"/C/Users/ariel.zusman/Downloads/demo/php/ajax-follow.php",
 		"/C/Users/ariel.zusman/Downloads/demo/php/ajax-followers.php",
-		"/C/xampp/apache/conf/httpd.conf",
 		"/C/xampp/tmp/sess_jd1o3h833e6sdbjajcqto81fc7",
 		"/C/xampp/htdocs/index.php",
 		"/C/Users/ariel.zusman/.WebIde90/config/options/keymap.xml",
@@ -585,43 +650,7 @@
 		"/C/Users/ariel.zusman/Downloads/user-registration/register.php",
 		"/C/xampp/htdocs/phpLiteAdmin/readme.md",
 		"/C/xampp/htdocs/phpLiteAdmin/phpliteadmin.config.php",
-		"/C/xampp/htdocs/chat.dev/public/phpLiteAdmin/phpliteadmin.config.php",
-		"/C/Users/ariel.zusman/AppData/Local/Temp/7zOC6340564/online.php",
-		"/C/xampp/htdocs/wptest/wp-config.php",
-		"/C/xampp/htdocs/phpLiteAdmin/test",
-		"/C/xampp/htdocs/phpLiteAdmin/phpliteadmin.config.sample.php",
-		"/C/xampp/apache/conf/extra/httpd-ssl.conf",
-		"/C/Users/ariel.zusman/Documents/vagrant-local/chatApp/Vagrantfile",
-		"/C/Users/ariel.zusman/Documents/sublime projects/chatapp.sublime-project",
-		"/C/Users/ariel.zusman/Documents/vagrant-local/chat/info.php",
-		"/C/Users/ariel.zusman/Documents/vagrant-local/chatApp/info.txt",
-		"/C/Users/ariel.zusman/Documents/vagrant-local/my-project/Vagrantfile",
-		"/C/Users/ariel.zusman/Documents/vagrant-local/my-project/puphpet/config.yaml",
-		"/C/Users/ariel.zusman/Documents/vagrant-local/my-project/.gitattributes",
-		"/C/Users/ariel.zusman/Documents/vagrant-local/my-project/puphpet/vagrant/Vagrantfile-local",
-		"/C/Users/ariel.zusman/Documents/vagrant-local/my-project/info.php",
-		"/C/Windows/System32/drivers/etc/hosts",
-		"/C/Users/ariel.zusman/Documents/vagrant-local/my-project/provision/setup.sh",
-		"/C/Users/ariel.zusman/.VirtualBox/VirtualBox.xml",
-		"/C/Users/ariel.zusman/Downloads/adobe/~~ cracked files ~~/Readme.nfo",
-		"/C/projects/PV/Vagrantfile",
-		"/C/Users/ariel.zusman/.VirtualBox/VBoxSVC.log",
-		"/C/HashiCorp/Vagrant/embedded/gems/gems/vagrant-1.7.4/plugins/providers/virtualbox/action.rb",
-		"/C/Users/ariel.zusman/Documents/websites/socontent/wp-content/themes/spotoption-widescreen/inc/details-header.php",
-		"/C/Users/ariel.zusman/Documents/websites/socontent/wp-content/themes/spotoption-widescreen/header.php",
-		"/C/projects/vagrant-local/Vagrantfile",
-		"/C/projects/Vagrantfile",
-		"/C/Users/ariel.zusman/Documents/websites/socontent/wp-content/themes/spotoption-widescreen/page.php",
-		"/C/Users/ariel.zusman/Documents/websites/socontent/wp-content/themes/spotoption-widescreen/header-new.php",
-		"/C/Users/ariel.zusman/Documents/websites/socontent/wp-content/themes/spotoption-widescreen/style.css",
-		"/C/Users/ariel.zusman/Documents/websites/socontent/wp-content/themes/spotoption-widescreen/assets/css/style.php",
-		"/C/Users/ariel.zusman/Documents/websites/socontent/wp-content/themes/spotoption-widescreen/content-page-homepage.php",
-		"/C/Users/ariel.zusman/Documents/websites/socontent/wp-content/themes/spotoption-widescreen/library/css/25px.css",
-		"/C/Users/ariel.zusman/Documents/websites/socontent/wp-content/themes/spotoption-widescreen/content-post-standard.php",
-		"/C/Users/ariel.zusman/Documents/websites/socontent/wp-content/themes/spotoption-widescreen/content-page-new.php",
-		"/C/Users/ariel.zusman/Documents/websites/socontent/wp-content/themes/spotoption-widescreen/index.php",
-		"/C/Users/ariel.zusman/Documents/websites/microption/wp-content/themes/spotoption-widescreen/overrides.css",
-		"/C/Users/ariel.zusman/Documents/websites/microption/wp-content/themes/spotoption-widescreen/assets/css/style.php"
+		"/C/xampp/htdocs/chat.dev/public/phpLiteAdmin/phpliteadmin.config.php"
 	],
 	"find":
 	{
@@ -641,6 +670,16 @@
 		"case_sensitive": true,
 		"find_history":
 		[
+			"confi",
+			"update",
+			"5000",
+			"pdo",
+			"socket",
+			"git",
+			"value",
+			"public",
+			"function",
+			"action",
 			"buffer",
 			"constant ('",
 			"client_sockets",
@@ -761,60 +800,34 @@
 	"groups":
 	[
 		{
-			"selected": 2,
+			"selected": 3,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "public/chatServer2.php",
+					"file": "Vagrantfile",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 6298,
+						"buffer_size": 683,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								3957,
-								3957
+								254,
+								254
 							]
 						],
 						"settings":
 						{
-							"_anf_new": "",
-							"highlight_line": false,
-							"rulers":
-							[
-								80
-							],
-							"spell_check": false,
-							"syntax": "Packages/PHP/PHP.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true,
-							"vintage":
-							{
-								"_vintageous_glue_until_normal_mode": false,
-								"_vintageous_non_interactive": false,
-								"_vintageous_processing_notation": false,
-								"action": null,
-								"action_count": "",
-								"mode": "mode_normal",
-								"motion": null,
-								"motion_count": "",
-								"must_capture_register_name": false,
-								"normal_insert_count": "1",
-								"partial_sequence": "",
-								"register": "\"",
-								"sequence": "",
-								"xpos": 21
-							},
-							"word_wrap": true,
-							"wrap_width": 120
+							"syntax": "Packages/Ruby/Ruby.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 636.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 3,
@@ -822,79 +835,19 @@
 				},
 				{
 					"buffer": 1,
-					"file": "public/css/main.css",
+					"file": "src/public/js/main.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 7460,
+						"buffer_size": 1476,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								382,
-								456
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/CSS/CSS.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 415.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 6,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "/C/xampp/htdocs/chat.dev/index.php",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 3267,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								3221,
-								3221
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP/PHP.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 642.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "public/js/main.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1134,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								427,
-								427
+								988,
+								974
 							]
 						],
 						"settings":
@@ -904,19 +857,107 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 301.0,
+						"translation.y": 275.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "provision/setup.sh",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1502,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1252,
+								1275
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/ShellScript/Shell-Unix-Generic.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 171.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 1,
 					"type": "text"
 				},
 				{
-					"buffer": 4,
-					"file": "/C/xampp/htdocs/PHP-Websockets/users.php",
+					"buffer": 3,
+					"file": "provision/chat.conf",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 391,
+						"buffer_size": 642,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								9,
+								9
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/ApacheConf.tmLanguage/ApacheConf.tmLanguage",
+							"tab_size": 8,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "provision/chatServer.conf",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 604,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								11,
+								11
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/ApacheConf.tmLanguage/ApacheConf.tmLanguage",
+							"tab_size": 8,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": -0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "src/core/init.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 111,
 						"regions":
 						{
 						},
@@ -929,172 +970,13 @@
 						],
 						"settings":
 						{
-							"syntax": "Packages/PHP/PHP.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"file": "public/User.php",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 197,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								63,
-								63
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP/PHP.tmLanguage",
-							"translate_tabs_to_spaces": false
+							"syntax": "Packages/PHP/PHP.tmLanguage"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 5,
-					"type": "text"
-				},
-				{
-					"buffer": 6,
-					"file": "chatApp/Core/app.php",
-					"semi_transient": true,
-					"settings":
-					{
-						"buffer_size": 1081,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								199,
-								199
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP/PHP.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": -0.0,
-						"translation.y": 71.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 7,
-					"type": "text"
-				}
-			]
-		},
-		{
-			"selected": 1,
-			"sheets":
-			[
-				{
-					"buffer": 7,
-					"file": "public/websock.php",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 24097,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								4109,
-								4122
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP/PHP.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 1371.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 9,
-					"type": "text"
-				},
-				{
-					"buffer": 8,
-					"file": "public/telnet.php",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 3672,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2817,
-								2817
-							]
-						],
-						"settings":
-						{
-							"_anf_new": "",
-							"history_list_is_closing": true,
-							"syntax": "Packages/PHP/PHP.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 841.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 4,
-					"type": "text"
-				},
-				{
-					"buffer": 7,
-					"file": "public/websock.php",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 24097,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								4300,
-								4309
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP/PHP.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 72.0,
-						"translation.y": 1833.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 8,
 					"type": "text"
 				}
 			]
@@ -1117,18 +999,11 @@
 				0,
 				1,
 				1
-			],
-			[
-				1,
-				0,
-				2,
-				1
 			]
 		],
 		"cols":
 		[
 			0.0,
-			0.9,
 			1.0
 		],
 		"rows":
@@ -1165,31 +1040,111 @@
 		[
 			[
 				"main",
-				"public\\js\\main.js"
+				"src\\public\\js\\main.js"
 			],
 			[
-				"u",
-				"public\\User.php"
+				"chat",
+				"provision\\chatServer.conf"
+			],
+			[
+				"hos",
+				"provision\\hostfile.conf"
+			],
+			[
+				"set",
+				"provision\\setup.sh"
+			],
+			[
+				"vaf",
+				"Vagrantfile"
+			],
+			[
+				"work",
+				"src\\core\\logs\\worker.log"
+			],
+			[
+				"vag",
+				"Vagrantfile"
+			],
+			[
+				"",
+				"setup.sh"
+			],
+			[
+				"ho",
+				"provision\\hostfile.conf"
+			],
+			[
+				"dea",
+				"provision\\config\\deamon.conf"
+			],
+			[
+				"conf",
+				"provision\\config\\deamon.conf"
+			],
+			[
+				"va",
+				"Vagrantfile"
+			],
+			[
+				"de",
+				"provision\\config\\deamon.conf"
+			],
+			[
+				"vh",
+				"provision\\config\\nginx_vhost"
+			],
+			[
+				".sh",
+				"setup.sh"
+			],
+			[
+				"index",
+				"chatApp\\index.php"
+			],
+			[
+				"cha",
+				"chatApp\\core\\chatServer2.php"
+			],
+			[
+				"boo",
+				"bootsrap.sh"
+			],
+			[
+				"in",
+				"chatApp\\core\\init.php"
+			],
+			[
+				"chats",
+				"chatApp\\core\\chatServer2.php"
+			],
+			[
+				"app",
+				"chatApp\\Core\\app.php"
+			],
+			[
+				"w",
+				"public\\websock.php"
+			],
+			[
+				"ma",
+				"public\\js\\main.js"
 			],
 			[
 				"ind",
 				"public\\index.php"
 			],
 			[
+				"u",
+				"public\\User.php"
+			],
+			[
 				"web",
 				"public\\websock.php"
 			],
 			[
-				"cha",
-				"public\\chatServer.php"
-			],
-			[
 				"char",
 				"public\\chatServer.php"
-			],
-			[
-				"ma",
-				"public\\js\\main.js"
 			],
 			[
 				"ser",
@@ -1242,18 +1197,6 @@
 			[
 				".ht",
 				".htaccess"
-			],
-			[
-				"in",
-				"chat.dev\\public\\index.php"
-			],
-			[
-				"vag",
-				"Vagrantfile"
-			],
-			[
-				"vaf",
-				"Vagrantfile"
 			],
 			[
 				"inf",

@@ -1,0 +1,1 @@
+{"virtualbox":{"/var/www":{"create":true,"group":"www-data","owner":"www-data","guestpath":"/var/www","hostpath":"C:/xampp/htdocs/www.chat.io","disabled":false},"/vagrant":{"guestpath":"/vagrant","hostpath":"C:/xampp/htdocs/www.chat.io","disabled":false}}}
