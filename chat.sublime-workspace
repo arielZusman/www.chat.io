@@ -259,7 +259,7 @@
 			"file": "Vagrantfile",
 			"settings":
 			{
-				"buffer_size": 683,
+				"buffer_size": 684,
 				"line_ending": "Windows"
 			}
 		},
@@ -267,7 +267,7 @@
 			"file": "src/public/js/main.js",
 			"settings":
 			{
-				"buffer_size": 1476,
+				"buffer_size": 1467,
 				"line_ending": "Windows"
 			}
 		},
@@ -275,15 +275,23 @@
 			"file": "provision/setup.sh",
 			"settings":
 			{
-				"buffer_size": 1502,
+				"buffer_size": 1489,
 				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": ".gitignore",
+			"settings":
+			{
+				"buffer_size": 47,
+				"line_ending": "Windows"
 			}
 		},
 		{
 			"file": "provision/chat.conf",
 			"settings":
 			{
-				"buffer_size": 642,
+				"buffer_size": 632,
 				"line_ending": "Windows"
 			}
 		},
@@ -809,15 +817,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 683,
+						"buffer_size": 684,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								254,
-								254
+								206,
+								0
 							]
 						],
 						"settings":
@@ -839,15 +847,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1476,
+						"buffer_size": 1467,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								988,
-								974
+								989,
+								989
 							]
 						],
 						"settings":
@@ -857,10 +865,10 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 275.0,
+						"translation.y": 417.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 4,
+					"stack_index": 2,
 					"type": "text"
 				},
 				{
@@ -869,15 +877,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1502,
+						"buffer_size": 1489,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1252,
-								1275
+								1402,
+								1402
 							]
 						],
 						"settings":
@@ -885,7 +893,7 @@
 							"syntax": "Packages/ShellScript/Shell-Unix-Generic.tmLanguage"
 						},
 						"translation.x": 0.0,
-						"translation.y": 171.0,
+						"translation.y": 264.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 1,
@@ -893,19 +901,47 @@
 				},
 				{
 					"buffer": 3,
-					"file": "provision/chat.conf",
+					"file": ".gitignore",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 642,
+						"buffer_size": 47,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								9,
-								9
+								40,
+								40
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "provision/chat.conf",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 632,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
 							]
 						],
 						"settings":
@@ -918,11 +954,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 6,
 					"type": "text"
 				},
 				{
-					"buffer": 4,
+					"buffer": 5,
 					"file": "provision/chatServer.conf",
 					"semi_transient": false,
 					"settings":
@@ -944,15 +980,15 @@
 							"tab_size": 8,
 							"translate_tabs_to_spaces": true
 						},
-						"translation.x": -0.0,
+						"translation.x": 0.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 5,
 					"type": "text"
 				},
 				{
-					"buffer": 5,
+					"buffer": 6,
 					"file": "src/core/init.php",
 					"semi_transient": false,
 					"settings":
@@ -976,7 +1012,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 5,
+					"stack_index": 4,
 					"type": "text"
 				}
 			]
@@ -1038,6 +1074,10 @@
 		"last_filter": "",
 		"selected_items":
 		[
+			[
+				".gi",
+				".gitignore"
+			],
 			[
 				"main",
 				"src\\public\\js\\main.js"

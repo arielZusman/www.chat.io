@@ -17,7 +17,7 @@ class DB {
 
     private function __construct() {
         try {
-            $this->_pdo = new PDO('sqlite:' . dirname( __FILE__) . '/../db/ChatApp.db');
+            $this->_pdo = new PDO('sqlite:' . dirname( __FILE__) . '/db/ChatApp.db');
         } catch (PDOException $e) {
             die($e->getMessage());
         }

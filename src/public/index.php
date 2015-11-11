@@ -1,8 +1,7 @@
 <?php
 // session_start();
-// require_once '../chatApp/init.php';
-
-// $app = new App;
+require_once '../core/init.php';
+$app = new App;
 
 ?>
 <!doctype html>
