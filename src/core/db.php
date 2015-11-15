@@ -15,6 +15,9 @@ class DB {
         $_results,
         $_count = 0;
 
+    /**
+     * create db handle for our database
+     */
     private function __construct() {
         try {
             $this->_pdo = new PDO('sqlite:' . dirname( __FILE__) . '/db/ChatApp.db');
@@ -22,14 +25,22 @@ class DB {
             die($e->getMessage());
         }
     }
-
+    /**
+     * Singleton for db handle
+     * @return DB db handle
+     */
     public static function dbHandle() {
         if(!isset(self::$_handle)) {
             self::$_handle = new DB();
         }
         return self::$_handle;
     }
-
+    /**
+     * prepare and run query store results and row count
+     * @param  string $sql    the sql query we ned to run as 
+     * @param  array  $params the params passed to prepare the sql
+     * @return [type]         [description]
+     */
     public function query($sql, $params = array()) {
         $this->_error = false;
         if($this->_query = $this->_pdo->prepare($sql)){
@@ -52,11 +63,17 @@ class DB {
 
         return $this;
     }
-
+    /**
+     * get the last query results
+     * @return object the last query result
+     */
     public function results() {
         return $this->_results;
     }
-
+    /**
+     * last query affected rows
+     * @return int affected rows
+     */
     public function count()
     {
         return $this->_count;

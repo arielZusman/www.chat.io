@@ -1,0 +1,6 @@
+#Controller test
+the controller should be able to delgate action based on string like url
+    in: string "class/action/param1/param2"
+    out : 
+
+

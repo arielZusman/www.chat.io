@@ -1,32 +1,44 @@
 <?php 
+
 /**
 * 
 */
-
-require_once 'DB.php';
 class App
 {
-	private $db;
-	private $activeUsers;
+	
+	protected 	$controller,
+				$method,
+				$params;
 
-	public function __construct()
+	public function action($action)
 	{
-		$this->db = DB::dbHandle();
-		$query = "CREATE TABLE IF NOT EXISTS`users` (
-					`id`	INTEGER PRIMARY KEY AUTOINCREMENT,
-					`username`	TEXT NOT NULL UNIQUE,
-					`session`	TEXT
-				);";		
-		$this->db->query($query);
+		$action = explode('/', rtrim($action, '/'));
 
-		$query = "SELECT * FROM `users` WHERE  `session` != ''";
-		$this->db->query($query);
-	}
+		//class name
+		if (file_exists($action[0] . '.php')) {
+			$this->controller = $action[0];
+			unset($action[0]);
 
-	public function getActiveUsers($value='')
-	{
-		# code...
+
+			require_once $this->controller . '.php';
+
+			$this->controller = new $this->controller;
+
+		// method
+			If(isset($action[1])){
+				if(method_exists($this->controller, $action[1])){
+					$this->method = $action[1];
+					unset($action[1]);
+				}
+			}
+
+			$this->params = $action ? array_values($action) : [];
+
+			call_user_func_array([$this->controller, $this->method], $this->params);
+
+		}
 	}
 }
-// echo dirname( __FILE__);
-$app = new APP;
+
+$app = new App;
+$app->action('ChatLog/test/Ariel');

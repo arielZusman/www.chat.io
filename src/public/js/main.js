@@ -1,3 +1,5 @@
+// Global vars for testing
+var wsT;
 function updateUserList(users) {
     var userEl = '';
     var $users = $('.users');
@@ -16,6 +18,7 @@ $(document).ready(function() {
     // var wsUrl = "ws://127.0.0.1:5000/chatServer2.php";    
     var wsUrl = "ws://www.chat.io:5000/src/core/chatServer2.php";
     var ws = new WebSocket(wsUrl);
+    wsT = ws;
     ws.onopen = function(evt) {
         console.log(ws);
         // var msg = JSON.stringify({
@@ -29,12 +32,13 @@ $(document).ready(function() {
         console.log('Closed');
     };
     ws.onmessage = function(evt) {
-        console.log(evt);
+        console.log(evt.data);
         var msg = JSON.parse(evt.data);
-        if ('online' in msg) {
-            console.log(msg.online);
-            updateUserList(msg.online);
-        }
+        console.log(msg);
+        // if ('online' in msg) {
+        //     console.log(msg.online);
+        //     updateUserList(msg.online);
+        // }
     };
     ws.onerror = function(evt) {
         console.log(evt);
@@ -45,6 +49,6 @@ $(document).ready(function() {
             action: 'login',
             msg: $('#username').val()
         });
-        ws.send(msg);
+        ws.send(msg + "\0");
     });
 });

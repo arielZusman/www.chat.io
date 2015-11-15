@@ -4,6 +4,14 @@
 		"selected_items":
 		[
 			[
+				"arr",
+				"array"
+			],
+			[
+				"js",
+				"json_encode"
+			],
+			[
 				"conf",
 				"conf"
 			],
@@ -160,10 +168,6 @@
 				"num_changed_sockets"
 			],
 			[
-				"arr",
-				"array"
-			],
-			[
 				"fo",
 				"for	for …"
 			],
@@ -256,10 +260,18 @@
 	"buffers":
 	[
 		{
-			"file": "Vagrantfile",
+			"file": "src/core/DB.php",
 			"settings":
 			{
-				"buffer_size": 684,
+				"buffer_size": 1971,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "src/core/Server.php",
+			"settings":
+			{
+				"buffer_size": 6212,
 				"line_ending": "Windows"
 			}
 		},
@@ -267,39 +279,58 @@
 			"file": "src/public/js/main.js",
 			"settings":
 			{
-				"buffer_size": 1467,
+				"buffer_size": 1494,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "provision/setup.sh",
+			"contents": "<?php\nrequire_once 'DB.php';\n/**\n* \n*/\nclass App\n{\n	\n	private $db;		\n\n	public function __construct()\n	{\n		$this->db = DB::dbHandle();\n		$query = \"CREATE TABLE IF NOT EXISTS`users` (\n					`id`	INTEGER PRIMARY KEY AUTOINCREMENT,\n					`username`	TEXT NOT NULL UNIQUE,\n					`session`	TEXT\n				);\";		\n		$this->db->query($query);\n	}\n\n	/**\n	 * class/method/param1/param2\n	 * @param  array  $cmd [description]\n	 * @return [type]      [description]\n	 */\n	public function action($cmd = array('action'=>'','args' => '') )\n	{\n		if (is_array($cmd) && array_key_exists('action', $cmd)) {\n			$methods = get_class_methods(__CLASS__);\n			if (in_array($cmd['action'], $methods)) {\n				return call_user_func_array([__CLASS__, $cmd['action']], array($cmd['args']));\n			}\n		}\n	}\n\n	/**\n	 * [login description]\n	 * @param  string $username [description]\n	 * @return [type]           [description]\n	 */\n	private  function login($username = '')\n	{\n		// $args = func_get_args();\n		// var_export($args);\n		echo \"Login\";\n	}\n\n	private  function logout($username = '')\n	{\n		echo \"Logout\";\n	}\n\n	private  function sendTo($to = '', $msg = '')\n	{\n		echo \"sendTo\";\n	}\n	private function getActiveUsers($value='')\n	{\n		echo \"activeUsers<br/>\" ;\n		$query = \"SELECT * FROM `users` WHERE  `session` != ''\";\n		$this->db->query($query);\n		return $this->db->results();\n	}\n}\n\n$app = new App;\n$action = array('action'=>'getActiveUsers','args' => '');\nvar_dump($app->action($action));",
+			"file": "src/core/App.php",
+			"file_size": 1500,
+			"file_write_time": 130918208974098451,
 			"settings":
 			{
-				"buffer_size": 1489,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": ".gitignore",
-			"settings":
-			{
-				"buffer_size": 47,
+				"buffer_size": 1438,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "provision/chat.conf",
+			"contents": "user should be able to login to the chat\n	->\n\n\n	\n",
+			"file": "test.txt",
+			"file_size": 0,
+			"file_write_time": 130918859352091978,
 			"settings":
 			{
-				"buffer_size": 632,
+				"buffer_size": 49,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "provision/chatServer.conf",
+			"contents": "{\n	\"extensions\":\n	[\n		\"mmd\"\n	],\n\n	\"color_scheme\": \"Packages/MarkdownEditing/MarkdownEditor.tmTheme\",\n	// \"color_scheme\": \"Packages/MarkdownEditing/MarkdownEditor-Dark.tmTheme\",\n	// \"color_scheme\": \"Packages/MarkdownEditing/MarkdownEditor-Yellow.tmTheme\",\n\n	// This is a quick and dirty focus theme. In order to make it work, you've to\n	// set `\"highlight_line\": true,` in this settings file. It is likely that there will\n	// be more mature focus improvements in the future (maybe similar to iA Writer).\n	// \"color_scheme\": \"Packages/MarkdownEditing/MarkdownEditor-Focus.tmTheme\",\n\n	\"tab_size\": 4,\n	\"translate_tabs_to_spaces\": true,\n	\"trim_trailing_white_space_on_save\": false,\n	\"auto_match_enabled\": true,\n\n	// Layout\n	\"draw_centered\": true,\n	\"word_wrap\": true,\n	\"wrap_width\": 80,\n	\"rulers\": [],\n\n	// Line\n	\"line_numbers\": false,\n	\"highlight_line\": false,\n	\"line_padding_top\": 2,\n	\"line_padding_bottom\": 2,\n\n	// Caret\n	\"caret_style\": \"wide\",\n	\"caret_extra_top\": 3,\n	\"caret_extra_bottom\": 3,\n\n	// add trailing #'s to headlines\n	\"mde.match_header_hashes\": false,\n\n	// Automatically switches list bullet when indenting blank list item with <Tab>.\n	\"mde.list_indent_auto_switch_bullet\": true,\n\n	// List bullets to be used for automatically switching. In their order.\n	\"mde.list_indent_bullets\": [\"*\", \"-\", \"+\"],\n\n	// Always keep current line vertically centered.\n	\"mde.keep_centered\": false,\n\n	// Distraction free mode improvements. In order for these to work, you have to install\n	// FullScreenStatus plugin: https://github.com/maliayas/SublimeText_FullScreenStatus\n	\"mde.distraction_free_mode\": {\n		\"mde.keep_centered\": true\n	},\n\n	\"mde.lint\":{\n		// disabled rules, e.g. \"md001\".\n		\"disable\": [\"md013\"],\n		// Options:\n		//		atx, 		## title	only\n		//		atx_closed, ## title ##	only\n		//		setext, 	title		only\n		//				   	=====\n		//		any, 		consistent within the document\n		\"md003\": \"any\",\n		// Options:\n		//	    asterisk,	* only\n		//      plus, 		+ only\n		//      dash, 		- only\n		//      cyclic, 	different symbols on different levels\n		//      			and same symbol on same level\n		//      single, 	same symbol on different levels\n		//      any, 		same symbol on same level\n		\"md004\": \"cyclic\",\n		// Number of spaces per list indent. Set to 0 to use Sublime tab_size instead\n		\"md007\": 0,\n		// Maximum line length, Set to 0 to use Sublime wrap_width instead\n		\"md013\": 0,\n		// Disallowed trailing punctuation in headers\n		\"md026\": \".,;:!\",\n		// Options:\n		// 		one,		'1.' only\n		// 		ordered,	ascending number\n		// 		any,		consistent within one list\n		\"md029\": \"any\"\n	}\n}\n",
+			"file": "/C/Users/ariel.zusman/AppData/Roaming/Sublime Text 3/Packages/MarkdownEditing/MultiMarkdown.sublime-settings",
+			"file_size": -1,
+			"file_write_time": -1,
 			"settings":
 			{
-				"buffer_size": 604,
+				"buffer_size": 2566,
+				"line_ending": "Windows",
+				"read_only": true,
+				"scratch": true
+			}
+		},
+		{
+			"file": "/C/Users/ariel.zusman/AppData/Roaming/Sublime Text 3/Packages/User/MultiMarkdown.sublime-settings",
+			"settings":
+			{
+				"buffer_size": 76,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "src/public/index.php",
+			"settings":
+			{
+				"buffer_size": 2601,
 				"line_ending": "Windows"
 			}
 		},
@@ -307,7 +338,7 @@
 			"file": "src/core/init.php",
 			"settings":
 			{
-				"buffer_size": 111,
+				"buffer_size": 200,
 				"line_ending": "Windows"
 			}
 		}
@@ -320,9 +351,45 @@
 	"command_palette":
 	{
 		"height": 392.0,
-		"last_filter": "ru",
+		"last_filter": "md",
 		"selected_items":
 		[
+			[
+				"md",
+				"Set Syntax: Markdown"
+			],
+			[
+				"pla",
+				"Set Syntax: Plain Text"
+			],
+			[
+				"mad",
+				"Markdown Preview: Open Markdown Cheat sheet"
+			],
+			[
+				"ref",
+				"Project: Refresh Folders"
+			],
+			[
+				"rena",
+				"ANF: Rename File"
+			],
+			[
+				"del",
+				"ANF: Delete File"
+			],
+			[
+				"ren",
+				"ANF: Rename File"
+			],
+			[
+				"all",
+				"File: Close All"
+			],
+			[
+				"rei",
+				"Indentation: Reindent Lines"
+			],
 			[
 				"ru",
 				"Set Syntax: Ruby"
@@ -336,14 +403,6 @@
 				"Set Syntax: Ruby"
 			],
 			[
-				"all",
-				"File: Close All"
-			],
-			[
-				"ren",
-				"ANF: Rename File"
-			],
-			[
 				"conf",
 				"Set Syntax: Apache Conf"
 			],
@@ -354,10 +413,6 @@
 			[
 				"ruby",
 				"Set Syntax: Ruby"
-			],
-			[
-				"rei",
-				"Indentation: Reindent Lines"
 			],
 			[
 				"html",
@@ -460,10 +515,6 @@
 				"Set Syntax: Markdown GFM"
 			],
 			[
-				"md",
-				"Set Syntax: Markdown"
-			],
-			[
 				"user",
 				"Preferences: Settings - User"
 			],
@@ -527,17 +578,33 @@
 	[
 		"/C/xampp/htdocs/www.chat.io",
 		"/C/xampp/htdocs/www.chat.io/src",
-		"/C/xampp/htdocs/www.chat.io/src/core"
+		"/C/xampp/htdocs/www.chat.io/src/core",
+		"/C/xampp/htdocs/www.chat.io/src/core/db",
+		"/C/xampp/htdocs/www.chat.io/src/core/logs",
+		"/C/xampp/htdocs/www.chat.io/src/public"
 	],
 	"file_history":
 	[
+		"/C/Users/ariel.zusman/AppData/Roaming/Sublime Text 3/Packages/Markdown Preview/MarkdownPreview.sublime-settings",
+		"/C/Users/ariel.zusman/Downloads/fbChatSource/public/ajax/get_messages.php",
+		"/C/xampp/htdocs/www.chat.io/src/core/ChatLog.php",
+		"/C/Users/ariel.zusman/Downloads/fbChatSource/core/FbChatMock.php",
+		"/C/xampp/htdocs/www.chat.io/src/core/Controller.php",
+		"/C/xampp/htdocs/www.chat.io/src/core/App.php",
+		"/C/xampp/htdocs/www.chat.io/Vagrantfile",
+		"/C/xampp/htdocs/www.chat.io/src/public/js/main.js",
+		"/C/xampp/htdocs/www.chat.io/src/core/DB.php",
+		"/C/xampp/htdocs/logger.dev/classes/DB.php",
+		"/C/xampp/htdocs/logger.dev/classes/Validate.php",
+		"/C/xampp/htdocs/www.chat.io/provision/setup.sh",
+		"/C/xampp/htdocs/www.chat.io/.gitignore",
+		"/C/xampp/htdocs/www.chat.io/provision/chat.conf",
+		"/C/xampp/htdocs/www.chat.io/provision/chatServer.conf",
+		"/C/xampp/htdocs/www.chat.io/src/core/init.php",
+		"/C/xampp/htdocs/www.chat.io/src/public/index.php",
 		"/C/xampp/htdocs/www.chat.io/provision/hostfile.conf",
 		"/C/xampp/htdocs/www.chat.io/setup.sh",
-		"/C/xampp/htdocs/www.chat.io/Vagrantfile",
 		"/C/xampp/htdocs/www.chat.io/src/core/logs/worker.log",
-		"/C/xampp/htdocs/www.chat.io/src/public/index.php",
-		"/C/xampp/htdocs/www.chat.io/.gitignore",
-		"/C/xampp/htdocs/www.chat.io/src/public/js/main.js",
 		"/C/xampp/htdocs/www.chat.io/src/core/chatServer2.php",
 		"/C/xampp/htdocs/www.chat.io/hostfile.conf",
 		"/C/xampp/htdocs/www.chat.io/.vagrant/machines/default/virtualbox/synced_folders",
@@ -547,7 +614,6 @@
 		"/C/xampp/htdocs/www.chat.io/provision/hostfile",
 		"/C/xampp/apache/conf/httpd.conf",
 		"/C/xampp/apache/conf/extra/httpd-proxy.conf",
-		"/C/xampp/htdocs/www.chat.io/src/core/init.php",
 		"/C/xampp/htdocs/www.chat.io/provision/config/nginx_vhost",
 		"/C/xampp/htdocs/www.chat.io/chatApp/core/chatServer2.php",
 		"/C/xampp/htdocs/www.chat.io/src/index.php",
@@ -621,8 +687,6 @@
 		"/C/xampp/htdocs/logger.dev/core/init.php",
 		"/C/Users/ariel.zusman/Documents/vagrant-local/chat/chat/application/controller/songs.php",
 		"/C/xampp/htdocs/logger.dev/index.php",
-		"/C/xampp/htdocs/logger.dev/classes/Validate.php",
-		"/C/xampp/htdocs/logger.dev/classes/DB.php",
 		"/C/Users/ariel.zusman/Documents/vagrant-local/chat/chat/application/core/controller.php",
 		"/C/Users/ariel.zusman/Documents/vagrant-local/chat/chat/application/controller/home.php",
 		"/C/xampp/htdocs/logger.dev/login.php",
@@ -648,17 +712,7 @@
 		"/C/Users/ariel.zusman/Documents/vagrant-local/chat/myproject/.htaccess",
 		"/C/xampp/htdocs/chat.dev/public/js/main.js",
 		"/C/xampp/htdocs/chat.dev/public/index.php",
-		"/C/Users/ariel.zusman/Downloads/demo/php/ajax-follow.php",
-		"/C/Users/ariel.zusman/Downloads/demo/php/ajax-followers.php",
-		"/C/xampp/tmp/sess_jd1o3h833e6sdbjajcqto81fc7",
-		"/C/xampp/htdocs/index.php",
-		"/C/Users/ariel.zusman/.WebIde90/config/options/keymap.xml",
-		"/C/Users/ariel.zusman/Downloads/user-registration/login.php",
-		"/C/Users/ariel.zusman/Downloads/user-registration/member.php",
-		"/C/Users/ariel.zusman/Downloads/user-registration/register.php",
-		"/C/xampp/htdocs/phpLiteAdmin/readme.md",
-		"/C/xampp/htdocs/phpLiteAdmin/phpliteadmin.config.php",
-		"/C/xampp/htdocs/chat.dev/public/phpLiteAdmin/phpliteadmin.config.php"
+		"/C/Users/ariel.zusman/Downloads/demo/php/ajax-follow.php"
 	],
 	"find":
 	{
@@ -678,6 +732,13 @@
 		"case_sensitive": true,
 		"find_history":
 		[
+			"getMessages",
+			"public",
+			"protected",
+			"static",
+			"Controller",
+			"$dbHandle",
+			"Handle",
 			"confi",
 			"update",
 			"5000",
@@ -808,54 +869,84 @@
 	"groups":
 	[
 		{
-			"selected": 3,
+			"selected": 5,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "Vagrantfile",
+					"file": "src/core/DB.php",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 684,
+						"buffer_size": 1971,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								206,
-								0
+								1768,
+								1775
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/Ruby/Ruby.tmLanguage",
-							"tab_size": 2,
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"tab_size": 4,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 495.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 3,
+					"stack_index": 4,
 					"type": "text"
 				},
 				{
 					"buffer": 1,
-					"file": "src/public/js/main.js",
+					"file": "src/core/Server.php",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1467,
+						"buffer_size": 6212,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								989,
-								989
+								1679,
+								1679
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 425.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 8,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "src/public/js/main.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1494,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								386,
+								386
 							]
 						],
 						"settings":
@@ -865,60 +956,90 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 417.0,
+						"translation.y": 229.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 6,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "src/core/App.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1438,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1112,
+								1112
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 196.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "test.txt",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 49,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								46,
+								46
+							]
+						],
+						"settings":
+						{
+							"_anf_new": "",
+							"syntax": "Packages/MarkdownEditing/Markdown (Standard).tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 2.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 2,
 					"type": "text"
 				},
 				{
-					"buffer": 2,
-					"file": "provision/setup.sh",
+					"buffer": 5,
+					"file": "/C/Users/ariel.zusman/AppData/Roaming/Sublime Text 3/Packages/MarkdownEditing/MultiMarkdown.sublime-settings",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1489,
+						"buffer_size": 2566,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1402,
-								1402
+								105,
+								176
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/ShellScript/Shell-Unix-Generic.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 264.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": ".gitignore",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 47,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								40,
-								40
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Text/Plain text.tmLanguage"
+							"syntax": "Packages/JavaScript/JSON.tmLanguage"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -928,80 +1049,78 @@
 					"type": "text"
 				},
 				{
-					"buffer": 4,
-					"file": "provision/chat.conf",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 632,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/ApacheConf.tmLanguage/ApacheConf.tmLanguage",
-							"tab_size": 8,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 6,
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"file": "provision/chatServer.conf",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 604,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								11,
-								11
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/ApacheConf.tmLanguage/ApacheConf.tmLanguage",
-							"tab_size": 8,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 5,
-					"type": "text"
-				},
-				{
 					"buffer": 6,
+					"file": "/C/Users/ariel.zusman/AppData/Roaming/Sublime Text 3/Packages/User/MultiMarkdown.sublime-settings",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 76,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								74,
+								74
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JSON.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "src/public/index.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2601,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2540,
+								2540
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": -0.0,
+						"translation.y": 556.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 7,
+					"type": "text"
+				},
+				{
+					"buffer": 8,
 					"file": "src/core/init.php",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 111,
+						"buffer_size": 200,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
+								193,
+								193
 							]
 						],
 						"settings":
@@ -1012,7 +1131,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 4,
+					"stack_index": 5,
 					"type": "text"
 				}
 			]
@@ -1075,16 +1194,36 @@
 		"selected_items":
 		[
 			[
+				"ma",
+				"src\\public\\js\\main.js"
+			],
+			[
+				"chat",
+				"src\\core\\chatServer2.php"
+			],
+			[
+				"init",
+				"src\\core\\init.php"
+			],
+			[
+				"db",
+				"src\\core\\DB.php"
+			],
+			[
+				"app",
+				"src\\core\\App.php"
+			],
+			[
+				"a",
+				"src\\core\\App.php"
+			],
+			[
 				".gi",
 				".gitignore"
 			],
 			[
 				"main",
 				"src\\public\\js\\main.js"
-			],
-			[
-				"chat",
-				"provision\\chatServer.conf"
 			],
 			[
 				"hos",
@@ -1159,16 +1298,8 @@
 				"chatApp\\core\\chatServer2.php"
 			],
 			[
-				"app",
-				"chatApp\\Core\\app.php"
-			],
-			[
 				"w",
 				"public\\websock.php"
-			],
-			[
-				"ma",
-				"public\\js\\main.js"
 			],
 			[
 				"ind",
@@ -1415,7 +1546,7 @@
 	"show_minimap": false,
 	"show_open_files": false,
 	"show_tabs": true,
-	"side_bar_visible": false,
+	"side_bar_visible": true,
 	"side_bar_width": 262.0,
 	"status_bar_visible": true,
 	"template_settings":
