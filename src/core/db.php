@@ -31,6 +31,7 @@ class DB {
      */
     public static function dbHandle() {
         if(!isset(self::$_handle)) {
+            echo "db handle created";
             self::$_handle = new DB();
         }
         return self::$_handle;

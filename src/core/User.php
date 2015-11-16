@@ -2,16 +2,21 @@
 /**
  * 
  */
+
+// require_once 'DB.php';
 class User
 {
-	public 	$userId,
-			$sock;
-			
-			
+	private $db;	
 
-	function __construct($userId, $sock)
+	function __construct()
 	{
-		$this->userId = $userId;
-		$this->sock = $sock;
+		$this->db = DB::dbHandle();
+	}
+	
+	
+	public function login($username="")
+	{
+		var_dump($this->db);
+		echo "Login in:" . $username;
 	}
 }

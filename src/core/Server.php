@@ -160,7 +160,7 @@ class Server
                 $header = socket_read($newsock, 1024); //read data sent by the socket
                 
                 if($this->handshake($newsock, $header)) {
-                    $msg = $this->app->getActiveUsers();
+                    // $msg = $this->app->getActiveUsers();
                     $this->send($newsock, $msg);
                 }
                 

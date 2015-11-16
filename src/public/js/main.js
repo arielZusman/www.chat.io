@@ -45,10 +45,7 @@ $(document).ready(function() {
     };
     $('.loginForm').submit(function(e) {
         e.preventDefault();
-        var msg = JSON.stringify({
-            action: 'login',
-            msg: $('#username').val()
-        });
+        var msg = "user/login/" + $('#username').val();
         ws.send(msg + "\0");
     });
 });

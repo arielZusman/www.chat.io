@@ -3,4 +3,14 @@ the controller should be able to delgate action based on string like url
     in: string "class/action/param1/param2"
     out : 
 
+###problem: how do i send a message with this ?
+solutions: 
+    * __message is 1 of the params__
+    * go back to json
+    * send the message in 2 parts, 1 for the action the other for the message
+
+###problem: whats the best way to pass the db handle between classes ?
+solution: pass in the connection object:
+[http://ralphschindler.com/2012/03/09/php-constructor-best-practices-and-the-prototype-pattern]
+[http://stackoverflow.com/questions/18818511/pass-in-the-connection-object-or-create-it-inside-class-oop]
 

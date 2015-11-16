@@ -1,7 +1,9 @@
 <?php 
 
 /**
-* 
+*  Simple controller
+*  used to delegate action based on url like string 
+*  $app->action('class/method/param1/param2')
 */
 class App
 {
@@ -39,6 +41,3 @@ class App
 		}
 	}
 }
-
-$app = new App;
-$app->action('ChatLog/test/Ariel');

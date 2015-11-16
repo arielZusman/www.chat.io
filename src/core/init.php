@@ -5,6 +5,6 @@ set_time_limit(0);
 spl_autoload_register( function( $class ){
     require_once $class . '.php';
 });
-
+$db = DB::dbHandle();
 $app = new App;
 $server = new Server("127.0.0.1", 5000, $app);
