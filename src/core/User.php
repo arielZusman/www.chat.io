@@ -4,7 +4,7 @@
  */
 
 // require_once 'DB.php';
-class User
+class User implements \SplSubject
 {
 	private $db;	
 
@@ -16,7 +16,11 @@ class User
 	
 	public function login($username="")
 	{
-		var_dump($this->db);
+		if (strlen($username) > 0 ){
+
+			
+		}
+		
 		echo "Login in:" . $username;
 	}
 }

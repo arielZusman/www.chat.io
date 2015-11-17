@@ -160,7 +160,7 @@ class Server
                 $header = socket_read($newsock, 1024); //read data sent by the socket
                 
                 if($this->handshake($newsock, $header)) {
-                    // $msg = $this->app->getActiveUsers();
+                    $msg = "hi there" . json_encode($newsock);
                     $this->send($newsock, $msg);
                 }
                 
@@ -174,6 +174,7 @@ class Server
             }
             
             // loop through all the clients that have data to read from
+            
             foreach ($read as $read_sock) {
                 $numBytes = @socket_recv($read_sock, $buffer, 1024, 0);
                 if ($numBytes === false) {
@@ -181,8 +182,8 @@ class Server
                 } elseif ($numBytes == 0) {
                     // TODO normal disconnection
                 } else {
-                    // var_dump(json_decode($this->unmask($buffer)));
-                    $this->app->action($this->unmask($buffer));
+                    var_dump($this->unmask($buffer));
+                    $this->app->action($this->unmask($buffer), $read_sock);
                 }
                 
                 

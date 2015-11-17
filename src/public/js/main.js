@@ -32,20 +32,15 @@ $(document).ready(function() {
         console.log('Closed');
     };
     ws.onmessage = function(evt) {
-        console.log(evt.data);
-        var msg = JSON.parse(evt.data);
-        console.log(msg);
-        // if ('online' in msg) {
-        //     console.log(msg.online);
-        //     updateUserList(msg.online);
-        // }
+        console.log(evt.data);        
     };
     ws.onerror = function(evt) {
         console.log(evt);
     };
     $('.loginForm').submit(function(e) {
         e.preventDefault();
-        var msg = "user/login/" + $('#username').val();
-        ws.send(msg + "\0");
+        // var msg = "user/login/" + $('#username').val();
+        var msg = JSON.stringify(['user','login',$('#username').val()]);
+        ws.send(msg);
     });
 });

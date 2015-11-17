@@ -1,3 +1,12 @@
+#program flow
+    websocket connection
+    users logins or registers : user/login/name
+        new user obj created with his socketID
+        server obj is notified and adds this user to users array
+    user sends message : user/send/name/message
+
+
+
 #Controller test
 the controller should be able to delgate action based on string like url
     in: string "class/action/param1/param2"
@@ -5,8 +14,8 @@ the controller should be able to delgate action based on string like url
 
 ###problem: how do i send a message with this ?
 solutions: 
-    * __message is 1 of the params__
-    * go back to json
+    * message is 1 of the params if message has slashes it will be cut into an array
+    * __go back to json__
     * send the message in 2 parts, 1 for the action the other for the message
 
 ###problem: whats the best way to pass the db handle between classes ?
@@ -14,3 +23,21 @@ solution: pass in the connection object:
 [http://ralphschindler.com/2012/03/09/php-constructor-best-practices-and-the-prototype-pattern]
 [http://stackoverflow.com/questions/18818511/pass-in-the-connection-object-or-create-it-inside-class-oop]
 
+## Login query
+    if user exits update session col if not create new user and set session col
+
+## problem: how to pass the user socket handle to the user object
+    * what command to we need ?
+            login
+            logout
+            getActiveUsers
+            sendMsg
+
+    * integrate the controller into the Server ?
+    * Observer pattern: when user is logged in update user array in server
+
+## we don't want to create a new object each time a user send an action
+
+## observer 
+    server class is an observer of the user class
+    k

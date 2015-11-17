@@ -12,9 +12,12 @@ class App
 				$method,
 				$params;
 
-	public function action($action)
+	public function action($action, $socket)
 	{
-		$action = explode('/', rtrim($action, '/'));
+		var_dump(json_decode($action));
+		
+		// $action = explode('/', rtrim($action, '/'));
+		$action = json_decode($action);
 
 		//class name
 		if (file_exists($action[0] . '.php')) {
