@@ -10,12 +10,12 @@
 class Server
 {
     protected   $sock,
-                $users = array(),
-                $app;
+                $users = array(),        
+                $lastMsg;
     
-    function __construct($address = "127.0.0.1", $port = 5000, $app)
+    function __construct($address = "127.0.0.1", $port = 5000)
     {
-        $this->app = $app;
+        
         if (!($this->sock = socket_create(AF_INET, SOCK_STREAM, 0))) {
             die(Console::socketError("Couldn't create socket"));
         }
@@ -160,7 +160,7 @@ class Server
                 $header = socket_read($newsock, 1024); //read data sent by the socket
                 
                 if($this->handshake($newsock, $header)) {
-                    $msg = "hi there" . json_encode($newsock);
+                    $msg = "hi there";
                     $this->send($newsock, $msg);
                 }
                 
@@ -182,8 +182,9 @@ class Server
                 } elseif ($numBytes == 0) {
                     // TODO normal disconnection
                 } else {
-                    var_dump($this->unmask($buffer));
-                    $this->app->action($this->unmask($buffer), $read_sock);
+                    $this->setLastMsg($this->unmask($buffer));
+                    
+                    // $this->app->action($this->unmask($buffer), $read_sock);
                 }
                 
                 
@@ -192,6 +193,9 @@ class Server
         }
     }
     
+    public function setLastMsg($lastMsg){
+        $this->lastMsg = $lastMsg;
+    }
     
 }
 

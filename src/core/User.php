@@ -4,9 +4,11 @@
  */
 
 // require_once 'DB.php';
-class User implements \SplSubject
+class User
 {
-	private $db;	
+	private $db,
+			$socketID,
+			$isLogin;	
 
 	function __construct()
 	{
@@ -17,10 +19,11 @@ class User implements \SplSubject
 	public function login($username="")
 	{
 		if (strlen($username) > 0 ){
-
+			$this->isLogin = 1;
+			echo "Login in:" . $username;
 			
 		}
 		
-		echo "Login in:" . $username;
+		
 	}
 }
