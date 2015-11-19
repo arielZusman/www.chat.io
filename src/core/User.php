@@ -6,24 +6,13 @@
 // require_once 'DB.php';
 class User
 {
-	private $db,
-			$socketID,
-			$isLogin;	
+	public $socketID,
+				$username;
 
-	function __construct()
+	function __construct($username, $socketID)
 	{
-		$this->db = DB::dbHandle();
+		$this->username = $username;
+		$this->socketID = $socketID;
 	}
 	
-	
-	public function login($username="")
-	{
-		if (strlen($username) > 0 ){
-			$this->isLogin = 1;
-			echo "Login in:" . $username;
-			
-		}
-		
-		
-	}
 }

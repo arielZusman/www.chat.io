@@ -7,7 +7,7 @@
 /**
  * 
  */
-class Server
+abstract class Server
 {
     protected   $sock,
                 $users = array(),        
@@ -127,7 +127,7 @@ class Server
         return $header . $text;
     }
     
-    private function send($sendTo, $msg)
+    protected function send($sendTo, $msg)
     {
         $msg = $this->mask($msg);
         socket_write($sendTo, $msg, strlen($msg));
@@ -182,7 +182,7 @@ class Server
                 } elseif ($numBytes == 0) {
                     // TODO normal disconnection
                 } else {
-                    $this->setLastMsg($this->unmask($buffer));
+                    $this->setLastMsg($read_sock, $this->unmask($buffer));
                     
                     // $this->app->action($this->unmask($buffer), $read_sock);
                 }
@@ -193,11 +193,6 @@ class Server
         }
     }
     
-    public function setLastMsg($lastMsg){
-        $this->lastMsg = $lastMsg;
-    }
+    abstract protected function setLastMsg($read_sock, $lastMsg);
     
 }
-
-// $server = new Server;
-// $server->main();

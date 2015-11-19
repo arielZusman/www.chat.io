@@ -41,3 +41,6 @@ solution: pass in the connection object:
 ## observer 
     server class is an observer of the user class
     k
+## why do i need a controller class ?
+    * less dependency 
+    * 
