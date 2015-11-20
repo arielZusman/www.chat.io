@@ -4,12 +4,104 @@
 		"selected_items":
 		[
 			[
-				"arr",
-				"array"
+				"clas",
+				"class	PHP: class declaration"
+			],
+			[
+				"cla",
+				"class	class …"
+			],
+			[
+				"class",
+				"class	class …"
+			],
+			[
+				"doc_",
+				"doc_c	Class"
+			],
+			[
+				"d",
+				"def	PHP: define(..., ...)"
+			],
+			[
+				"pa",
+				"params"
+			],
+			[
+				"from",
+				"fromUserID"
+			],
+			[
+				"user",
+				"username"
+			],
+			[
+				"to",
+				"todo	@todo"
+			],
+			[
+				"array_filet",
+				"array_filter()	standard Function"
+			],
+			[
+				"s",
+				"socketID"
+			],
+			[
+				"call_us",
+				"call_user_func_array()	standard Function"
+			],
+			[
+				"is_a",
+				"is_array"
+			],
+			[
+				"Spl",
+				"SplSubject	SPL Interface"
+			],
+			[
+				"st",
+				"stringify"
 			],
 			[
 				"js",
-				"json_encode"
+				"json_decode"
+			],
+			[
+				"strlen",
+				"strlen()	Core Function"
+			],
+			[
+				"arrv",
+				"array_values()	standard Function"
+			],
+			[
+				"meth",
+				"method_exists()	Core Function"
+			],
+			[
+				"file_ex",
+				"file_exists()	standard Function"
+			],
+			[
+				"FILTER_S",
+				"FILTER_SANITIZE_URL	filter Constant"
+			],
+			[
+				"filter",
+				"filter_var"
+			],
+			[
+				"parse",
+				"parse_url"
+			],
+			[
+				"me",
+				"method"
+			],
+			[
+				"arr",
+				"array"
 			],
 			[
 				"conf",
@@ -54,10 +146,6 @@
 			[
 				"sub",
 				"submit	.submit()"
-			],
-			[
-				"user",
-				"userID"
 			],
 			[
 				"re",
@@ -184,10 +272,6 @@
 				"get_resource_type"
 			],
 			[
-				"filter",
-				"filter_input"
-			],
-			[
 				"print",
 				"print_r"
 			],
@@ -260,69 +344,40 @@
 	"buffers":
 	[
 		{
+			"contents": "#program flow\n    websocket connection\n    users logins or registers : user/login/name\n        new user obj created with his socketID\n        server obj is notified and adds this user to users array\n    user sends message : user/send/name/message\n\n\n\n#Controller test\nthe controller should be able to delgate action based on string like url\n    in: string \"class/action/param1/param2\"\n    out : \n\n###problem: how do i send a message with this ?\nsolutions: \n    * message is 1 of the params if message has slashes it will be cut into an array\n    * __go back to json__\n    * send the message in 2 parts, 1 for the action the other for the message\n\n###problem: whats the best way to pass the db handle between classes ?\nsolution: pass in the connection object:\n[http://ralphschindler.com/2012/03/09/php-constructor-best-practices-and-the-prototype-pattern]\n[http://stackoverflow.com/questions/18818511/pass-in-the-connection-object-or-create-it-inside-class-oop]\n\n## Login query\n    if user exits update session col if not create new user and set session col\n\n## problem: how to pass the user socket handle to the user object\n    * what command to we need ?\n            login\n            logout\n            getActiveUsers\n            sendMsg\n\n    * integrate the controller into the Server ?\n    * Observer pattern: when user is logged in update user array in server\n\n## we don't want to create a new object each time a user send an action\n\n## observer \n    server class is an observer of the user class\n    k\n## why do i need a controller class ?\n    * less dependency \n\n\n   possible chat actions:\n   user/login/name\n   user/send/name/msg\n   chatApp/getActive users\n\n   user1 | user2 | message | timestamp\n   1        2       hi          23\n   1        2       what ?      25\n   2\n\n   select * from conversation where (user_one = '2' and user_two = '10') or (user_one = '10' and user_two = '2') order by timestamp\n   insert into conversation (user_one,user_two,message)  values(1,2,'hii ther') ",
+			"file": "test.txt",
+			"file_size": 1968,
+			"file_write_time": 130924164336543206,
+			"settings":
+			{
+				"buffer_size": 1992,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"contents": "// Global vars for testing\nvar wsT;\nfunction updateUserList(users) {\n    var userEl = '';\n    var $users = $('.users');\n    $users.empty();\n    for (var userID in users) {\n        if (users.hasOwnProperty(userID)) {\n            userEl = '<li class=\"user__item userID-';\n            userEl += userID + '\">';\n            userEl += users[userID] + '</li>';\n            $users.append(userEl);\n        }\n    }\n}\n$(document).ready(function() {\n    \"use strict\";\n    // var wsUrl = \"ws://127.0.0.1:5000/chatServer2.php\";    \n    var wsUrl = \"ws://www.chat.io:5000/src/core/chatServer2.php\";\n    var ws = new WebSocket(wsUrl);\n    wsT = ws;\n    ws.onopen = function(evt) {\n        var msg = JSON.stringify(['login',$('#username').val()]);\n        ws.send(msg);\n    };\n    ws.onclose = function(evt) {\n        console.log(evt);\n        console.log('Closed');\n    };\n    ws.onmessage = function(evt) {\n        console.log(evt.data);        \n    };\n    ws.onerror = function(evt) {\n        console.log(evt);\n    };\n    $('.loginForm').submit(function(e) {\n        e.preventDefault();\n        // var msg = \"user/login/\" + $('#username').val();\n        var msg = JSON.stringify(['login',$('#username').val()]);\n        ws.send(msg);\n    });\n});",
+			"file": "src/public/js/main.js",
+			"file_size": 1355,
+			"file_write_time": 130923315023860179,
+			"settings":
+			{
+				"buffer_size": 1231,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "src/core/User.php",
+			"settings":
+			{
+				"buffer_size": 208,
+				"line_ending": "Windows"
+			}
+		},
+		{
 			"file": "src/core/DB.php",
 			"settings":
 			{
-				"buffer_size": 1971,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "src/core/Server.php",
-			"settings":
-			{
-				"buffer_size": 6212,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "src/public/js/main.js",
-			"settings":
-			{
-				"buffer_size": 1494,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"contents": "<?php\nrequire_once 'DB.php';\n/**\n* \n*/\nclass App\n{\n	\n	private $db;		\n\n	public function __construct()\n	{\n		$this->db = DB::dbHandle();\n		$query = \"CREATE TABLE IF NOT EXISTS`users` (\n					`id`	INTEGER PRIMARY KEY AUTOINCREMENT,\n					`username`	TEXT NOT NULL UNIQUE,\n					`session`	TEXT\n				);\";		\n		$this->db->query($query);\n	}\n\n	/**\n	 * class/method/param1/param2\n	 * @param  array  $cmd [description]\n	 * @return [type]      [description]\n	 */\n	public function action($cmd = array('action'=>'','args' => '') )\n	{\n		if (is_array($cmd) && array_key_exists('action', $cmd)) {\n			$methods = get_class_methods(__CLASS__);\n			if (in_array($cmd['action'], $methods)) {\n				return call_user_func_array([__CLASS__, $cmd['action']], array($cmd['args']));\n			}\n		}\n	}\n\n	/**\n	 * [login description]\n	 * @param  string $username [description]\n	 * @return [type]           [description]\n	 */\n	private  function login($username = '')\n	{\n		// $args = func_get_args();\n		// var_export($args);\n		echo \"Login\";\n	}\n\n	private  function logout($username = '')\n	{\n		echo \"Logout\";\n	}\n\n	private  function sendTo($to = '', $msg = '')\n	{\n		echo \"sendTo\";\n	}\n	private function getActiveUsers($value='')\n	{\n		echo \"activeUsers<br/>\" ;\n		$query = \"SELECT * FROM `users` WHERE  `session` != ''\";\n		$this->db->query($query);\n		return $this->db->results();\n	}\n}\n\n$app = new App;\n$action = array('action'=>'getActiveUsers','args' => '');\nvar_dump($app->action($action));",
-			"file": "src/core/App.php",
-			"file_size": 1500,
-			"file_write_time": 130918208974098451,
-			"settings":
-			{
-				"buffer_size": 1438,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"contents": "user should be able to login to the chat\n	->\n\n\n	\n",
-			"file": "test.txt",
-			"file_size": 0,
-			"file_write_time": 130918859352091978,
-			"settings":
-			{
-				"buffer_size": 49,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"contents": "{\n	\"extensions\":\n	[\n		\"mmd\"\n	],\n\n	\"color_scheme\": \"Packages/MarkdownEditing/MarkdownEditor.tmTheme\",\n	// \"color_scheme\": \"Packages/MarkdownEditing/MarkdownEditor-Dark.tmTheme\",\n	// \"color_scheme\": \"Packages/MarkdownEditing/MarkdownEditor-Yellow.tmTheme\",\n\n	// This is a quick and dirty focus theme. In order to make it work, you've to\n	// set `\"highlight_line\": true,` in this settings file. It is likely that there will\n	// be more mature focus improvements in the future (maybe similar to iA Writer).\n	// \"color_scheme\": \"Packages/MarkdownEditing/MarkdownEditor-Focus.tmTheme\",\n\n	\"tab_size\": 4,\n	\"translate_tabs_to_spaces\": true,\n	\"trim_trailing_white_space_on_save\": false,\n	\"auto_match_enabled\": true,\n\n	// Layout\n	\"draw_centered\": true,\n	\"word_wrap\": true,\n	\"wrap_width\": 80,\n	\"rulers\": [],\n\n	// Line\n	\"line_numbers\": false,\n	\"highlight_line\": false,\n	\"line_padding_top\": 2,\n	\"line_padding_bottom\": 2,\n\n	// Caret\n	\"caret_style\": \"wide\",\n	\"caret_extra_top\": 3,\n	\"caret_extra_bottom\": 3,\n\n	// add trailing #'s to headlines\n	\"mde.match_header_hashes\": false,\n\n	// Automatically switches list bullet when indenting blank list item with <Tab>.\n	\"mde.list_indent_auto_switch_bullet\": true,\n\n	// List bullets to be used for automatically switching. In their order.\n	\"mde.list_indent_bullets\": [\"*\", \"-\", \"+\"],\n\n	// Always keep current line vertically centered.\n	\"mde.keep_centered\": false,\n\n	// Distraction free mode improvements. In order for these to work, you have to install\n	// FullScreenStatus plugin: https://github.com/maliayas/SublimeText_FullScreenStatus\n	\"mde.distraction_free_mode\": {\n		\"mde.keep_centered\": true\n	},\n\n	\"mde.lint\":{\n		// disabled rules, e.g. \"md001\".\n		\"disable\": [\"md013\"],\n		// Options:\n		//		atx, 		## title	only\n		//		atx_closed, ## title ##	only\n		//		setext, 	title		only\n		//				   	=====\n		//		any, 		consistent within the document\n		\"md003\": \"any\",\n		// Options:\n		//	    asterisk,	* only\n		//      plus, 		+ only\n		//      dash, 		- only\n		//      cyclic, 	different symbols on different levels\n		//      			and same symbol on same level\n		//      single, 	same symbol on different levels\n		//      any, 		same symbol on same level\n		\"md004\": \"cyclic\",\n		// Number of spaces per list indent. Set to 0 to use Sublime tab_size instead\n		\"md007\": 0,\n		// Maximum line length, Set to 0 to use Sublime wrap_width instead\n		\"md013\": 0,\n		// Disallowed trailing punctuation in headers\n		\"md026\": \".,;:!\",\n		// Options:\n		// 		one,		'1.' only\n		// 		ordered,	ascending number\n		// 		any,		consistent within one list\n		\"md029\": \"any\"\n	}\n}\n",
-			"file": "/C/Users/ariel.zusman/AppData/Roaming/Sublime Text 3/Packages/MarkdownEditing/MultiMarkdown.sublime-settings",
-			"file_size": -1,
-			"file_write_time": -1,
-			"settings":
-			{
-				"buffer_size": 2566,
-				"line_ending": "Windows",
-				"read_only": true,
-				"scratch": true
-			}
-		},
-		{
-			"file": "/C/Users/ariel.zusman/AppData/Roaming/Sublime Text 3/Packages/User/MultiMarkdown.sublime-settings",
-			"settings":
-			{
-				"buffer_size": 76,
+				"buffer_size": 2009,
 				"line_ending": "Windows"
 			}
 		},
@@ -330,15 +385,74 @@
 			"file": "src/public/index.php",
 			"settings":
 			{
-				"buffer_size": 2601,
+				"buffer_size": 2446,
 				"line_ending": "Windows"
+			}
+		},
+		{
+			"contents": "<?php\n\nclass User\n{\n	public $socketID,\n	$username;\n\n	function __construct($username, $socketID)\n	{\n		$this->username = $username;\n		$this->socketID = $socketID;\n	}\n	\n}\n\n$users[] = new User('arielz',1);\n$users[] = new User('dani',1);\n$users[] = new User('sage',1);\n\n$user = array_filter($users, function($val){\n	return ($val->username == 'arielz') ? true : false;\n});\n\n",
+			"file": "src/core/test.php",
+			"file_size": 420,
+			"file_write_time": 130924138080582627,
+			"settings":
+			{
+				"buffer_size": 368,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"contents": "# gerardroche/sublime-php-grammar\n\nA plugin for Sublime Text.\n\nProvides a PHP syntax definition, decent indentation rules, macros, and other useful features.\n\n## Sublime Text 3 only\n\n**All fixes and improvements since version 0.9.0 and all future fixes and improvements apply only to ST >= 3095** because build [3084](http://www.sublimetext.com/3dev) introduced a rewritten syntax definition file format and it is too much overhead to support multiple syntax formats.\n\nI know that many can't update to the latest build. The package will continue work for older versions of Sublime Text 3 just without the newer fixes and improvements.\n\n### Known issues\n\n* Error loading syntax file dialog on install [#45](https://github.com/gerardroche/sublime-php-grammar/issues/45)\n\n## Overview\n\n* [Features](#features)\n* [Installation](#installation)\n* [Usage](#usage)\n* [Contributing](#contributing)\n* [Changelog](#changelog)\n* [Credits](#credits)\n* [License](#license)\n\n## Features\n\n* Support for PHP [~5.6](http://semver.org)\n* Improved support for syntax highlighters\n* Decent macros and smart completions\n* Decent indentation rules\n\n## Installation\n\nNote: This package disables the native PHP package including its completions and snippets. If you disable or remove this package, you will need to reenable the native PHP package manually.\n\nCompletions and snippets are provided by individual packages:\n\n* [PHP Completions](https://packagecontrol.io/packages/PHP%20Completions%20Kit)\n* [PHP Snippets](https://packagecontrol.io/packages/php-snippets)\n\n### Package Control installation\n\nThe preferred method of installation is via Package Control.\n\n1. Install [Package Control](https://packagecontrol.io).\n2. From inside Sublime Text, open Package Control's Command Pallet: <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>P</kbd> (Windows, Linux) or <kbd>Cmd</kbd>+<kbd>Shift</kbd>+<kbd>P</kbd> on Mac.\n3. Type `install package` and hit Return. A list of available packages will be displayed.\n4. Type `php-grammar` and hit Return. The package will be downloaded to the appropriate directory.\n5. Restart Sublime Text to complete ins,rtallation. The features listed above should now be available.\n\n### Manual installation\n\n1. Close Sublime Text.\n2. Download or clone this repository to a directory named `php-grammar` in the Sublime Text Packages directory for your platform:\n    * Linux: `git clone https://github.com/gerardroche/sublime-php-grammar.git ~/.config/sublime-text-3/Packages/php-grammar`\n    * OS X: `git clone https://github.com/gerardroche/sublime-php-grammar.git ~/Library/Application\\ Support/Sublime\\ Text\\ 3/Packages/php-grammar`\n    * Windows: `git clone https://github.com/gerardroche/sublime-php-grammar.git %APPDATA%\\Sublime/ Text/ 3/Packages/php-grammar`\n3. Restart Sublime Text to complete installation. The features listed above should now be available.\n\n## Usage\n\n### Macros\n\nTo press any character overriden by a macro or smart completion prefix it with <kbd>Ctrl</kbd> or <kbd>Shift</kbd> e.g. to insert a newline press <kbd>Shift</kbd>+<kbd>Enter</kbd> or a tab press <kbd>Shift</kbd>+<kbd>Tab</kbd>.\n\n<kbd>Enter</kbd>\n\n```\narray(|)                    | array(\n                            |     |\n                            | )\n\nfunction_call(|)            | function_call(\n                            |     |\n                            | )\n\nnew class_name(|)           | new class_name(\n                            |     |\n                            | )\n```\n\n<kbd>Ctrl</kbd>+<kbd>Enter</kbd>\n\n```\narray(                      | array(\n    'str|'                  |     'str',\n)                           |     |\n                            | )\n\n'str|ing'                   | 'string';\n                            | |\n\nfunction_call(|)            | function_call();\n                            | |\n\nif ($condition|)            | if ($condition) {\n                            |     |\n                            | }\n\nforeach ($x => $y|)         | foreach ($x => $y) {\n                            |     |\n                            | }\n\nwhile ($condition|)         | while ($condition) {\n                            |     |\n                            | }\n\nfor ($i = 0; $i < ; $i++|)  | for ($i = 0; $i < ; $i++) {\n                            |     |\n                            | }\n\nswitch ($condition|)        | switch ($condition|) {\n                            |     |\n                            | }\n\nfunction x(|)               | function x()\n                            | {\n                            |     |\n                            | }\n\nclass x                     | class x\n{                           | {\n    public function y(|)    |     public function y()\n}                           |     {\n                            |         |\n                            |     }\n                            | }\n```\n\n<kbd>Ctrl</kbd>+<kbd>;</kbd>\n\n```\n'str|ing'                   | 'str|ing';\n\nfunction_call(|)            | function_call();|\n```\n\n<kbd>Tab</kbd>\n\n```\n$arr = array(               | $arr = array(\n    'str|'                  |     'str' => |\n)                           | )\n\n$arr = array(               | $arr = array(\n    'str'|                  |     'str' => |\n)                           | )\n```\n\n### Indentation rules\n\nTo reindent:\n\n1. select the code to reindent\n2. select `Menu > Edit > Line > Reindent`\n\nExample\n\n```\nOriginal                   ->  Reindented\n\n$val = array(                | $val = array(\narray(                       |     array(\narray(                       |         array(\narray(                       |             array(\narray(                       |                 array(\narray(                       |                     array(\n)                            |                     )\n)                            |                 )\n)                            |             )\n)                            |         )\n),                           |     ),\n'x' => 'y',                  |     'x' => 'y',\n\"multi\" => array(            |         \"multi\" => array(\n\"dimensional\" => array(      |             \"dimensional\" => array(\n\"array\" => \"x\"               |                 \"array\" => \"x\"\n'x' => array(                |                 'x' => array(\n'y' => 'z'                   |                     'y' => 'z'\n)                            |                 )\n)                            |             )\n)                            |     )\n);                           | );\n```\n\n## Contributing\n\nYour issue reports and pull requests are always welcome.\n\nSee [CONTRIBUTING.md](CONTRIBUTING.md).\n\n## Changelog\n\nSee [CHANGELOG.md](CHANGELOG.md).\n\n## Credits\n\nOriginally converted from the [PHP TextMate package](https://github.com/textmate/php.tmbundle) bundled with Sublime Text.\n\n## License\n\nReleased under the [BSD 3-Clause License](LICENSE).\n",
+			"file": "/C/Users/ariel.zusman/AppData/Roaming/Sublime Text 3/Packages/php-grammar/README.md",
+			"file_size": -1,
+			"file_write_time": -1,
+			"settings":
+			{
+				"buffer_size": 6807,
+				"line_ending": "Windows",
+				"read_only": true,
+				"scratch": true
+			}
+		},
+		{
+			"file": "src/core/ChatApp.php",
+			"settings":
+			{
+				"buffer_size": 1525,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"contents": "Package Control Messages\n========================\n\nPHP Completions Kit\n-------------------\n\n  # php-completions 0.12.0 changelog\n  \n  * Added: Auto disable native PHP package completions\n  * Added: Package Settings Menu with README, CHANGELOG, and LICENSE links\n  * Updated: completions to PHP 5.6.14\n  \n  ## Complementary Plugins\n  \n  * [PHP Grammar](https://github.com/gerardroche/sublime-php-grammar)\n  * [PHP Snippets](https://github.com/gerardroche/sublime-php-snippets)\n  * [PHPUnit](https://github.com/gerardroche/sublime-phpunit)\n  * [PHPUnit Completions](https://github.com/gerardroche/sublime-phpunit-completions)\n  * [PHPUnit Snippets](https://github.com/gerardroche/sublime-phpunit-snippets)\n",
+			"settings":
+			{
+				"buffer_size": 704,
+				"line_ending": "Windows",
+				"name": "Package Control Messages",
+				"read_only": true,
+				"scratch": true
 			}
 		},
 		{
 			"file": "src/core/init.php",
 			"settings":
 			{
-				"buffer_size": 200,
+				"buffer_size": 187,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "src/core/Server.php",
+			"settings":
+			{
+				"buffer_size": 6267,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "src/core/websock.php",
+			"settings":
+			{
+				"buffer_size": 24097,
 				"line_ending": "Windows"
 			}
 		}
@@ -350,13 +464,69 @@
 	"build_varint": "",
 	"command_palette":
 	{
-		"height": 392.0,
-		"last_filter": "md",
+		"height": 173.0,
+		"last_filter": "ligh",
 		"selected_items":
 		[
 			[
+				"ligh",
+				"Set Syntax: Markdown Light"
+			],
+			[
+				"php",
+				"Set Syntax: PHP"
+			],
+			[
+				"html",
+				"Set Syntax: HTML"
+			],
+			[
+				"php ",
+				"Set Syntax: PHP"
+			],
+			[
+				"ins",
+				"Package Control: Install Package"
+			],
+			[
+				"ena",
+				"Package Control: Enable Package"
+			],
+			[
+				"remo",
+				"Package Control: Remove Package"
+			],
+			[
+				"rei",
+				"Indentation: Reindent Lines"
+			],
+			[
+				"inst",
+				"Package Control: Install Package"
+			],
+			[
+				"sql",
+				"SQL Beautifier: Format Current SQL File"
+			],
+			[
+				"del",
+				"ANF: Delete Current File"
+			],
+			[
+				"all",
+				"File: Close All"
+			],
+			[
+				"light",
+				"Set Syntax: Markdown Light"
+			],
+			[
 				"md",
 				"Set Syntax: Markdown"
+			],
+			[
+				"pl",
+				"Set Syntax: Plain Text"
 			],
 			[
 				"pla",
@@ -375,20 +545,8 @@
 				"ANF: Rename File"
 			],
 			[
-				"del",
-				"ANF: Delete File"
-			],
-			[
 				"ren",
 				"ANF: Rename File"
-			],
-			[
-				"all",
-				"File: Close All"
-			],
-			[
-				"rei",
-				"Indentation: Reindent Lines"
 			],
 			[
 				"ru",
@@ -407,32 +565,12 @@
 				"Set Syntax: Apache Conf"
 			],
 			[
-				"inst",
-				"Package Control: Install Package"
-			],
-			[
 				"ruby",
 				"Set Syntax: Ruby"
 			],
 			[
-				"html",
-				"Set Syntax: HTML"
-			],
-			[
-				"ins",
-				"Package Control: Install Package"
-			],
-			[
-				"php",
-				"Set Syntax: PHP"
-			],
-			[
 				"z",
 				"Origami: Zoom Current Pane"
-			],
-			[
-				"ena",
-				"Package Control: Enable Package"
 			],
 			[
 				"remov",
@@ -493,10 +631,6 @@
 			[
 				"Package Control: in",
 				"Package Control: Install Package"
-			],
-			[
-				"remo",
-				"Package Control: Remove Package"
 			],
 			[
 				"phpf",
@@ -580,28 +714,54 @@
 		"/C/xampp/htdocs/www.chat.io/src",
 		"/C/xampp/htdocs/www.chat.io/src/core",
 		"/C/xampp/htdocs/www.chat.io/src/core/db",
-		"/C/xampp/htdocs/www.chat.io/src/core/logs",
-		"/C/xampp/htdocs/www.chat.io/src/public"
+		"/C/xampp/htdocs/www.chat.io/src/core/logs"
 	],
 	"file_history":
 	[
+		"/C/xampp/htdocs/www.chat.io/data.csv",
+		"/C/Users/ariel.zusman/AppData/Roaming/Sublime Text 3/Packages/php-snippets/README.md",
+		"/C/Program Files (x86)/Far Manager/Documentation/eng/Bug.Report.txt",
+		"/C/xampp/htdocs/www.chat.io/src/core/chatLog.php",
+		"/C/xampp/htdocs/www.chat.io/test.html",
+		"/C/xampp/htdocs/www.chat.io/src/core/App.php",
+		"/C/xampp/htdocs/www.chat.io/src/core/Subject.php",
+		"/C/xampp/htdocs/www.chat.io/src/core/Observer.php",
+		"/C/xampp/htdocs/www.chat.io/src/core/Server.php",
+		"/C/xampp/htdocs/www.chat.io/src/core/init.php",
+		"/C/xampp/htdocs/www.chat.io/src/core/App_bak.php",
+		"/C/xampp/htdocs/www.chat.io/src/core/websock.php",
+		"/C/xampp/htdocs/www.chat.io/src/core/DB.php",
+		"/C/xampp/htdocs/logger.dev/index.php",
+		"/C/xampp/htdocs/logger.dev/core/init.php",
+		"/C/xampp/htdocs/logger.dev/classes/DB.php",
+		"/C/xampp/htdocs/www.chat.io/html/index.html",
+		"/C/Users/ariel.zusman/AppData/Roaming/Sublime Text 3/Packages/MarkdownEditing/README.md",
+		"/C/xampp/htdocs/www.chat.io/src/core/App2.php",
+		"/C/xampp/htdocs/www.chat.io/src/public/js/main.js",
+		"/C/xampp/htdocs/www.chat.io/src/core/ChatLog.php",
+		"/C/xampp/htdocs/www.chat.io/test.txt",
+		"/C/xampp/htdocs/www.chat.io/src/public/index.php",
+		"/C/Users/ariel.zusman/AppData/Roaming/Sublime Text 3/Packages/User/MultiMarkdown.sublime-settings",
+		"/C/Users/ariel.zusman/AppData/Roaming/Sublime Text 3/Packages/User/JSON.sublime-settings",
+		"/C/xampp/htdocs/chat.dev/app/Core/Router.php",
+		"/C/xampp/htdocs/chat.dev/app/bootstarp.php",
+		"/C/xampp/htdocs/logger.dev/classes/Redirect.php",
+		"/C/xampp/htdocs/logger.dev/classes/Input.php",
+		"/C/xampp/htdocs/logger.dev/classes/Config.php",
+		"/C/xampp/htdocs/logger.dev/classes/Cookie.php",
+		"/C/xampp/htdocs/logger.dev/classes/User.php",
+		"/C/Users/ariel.zusman/AppData/Roaming/Sublime Text 3/Packages/User/MarkdownLight.sublime-settings",
+		"/C/Users/ariel.zusman/AppData/Roaming/Sublime Text 3/Packages/MarkdownEditing/MultiMarkdown.sublime-settings",
 		"/C/Users/ariel.zusman/AppData/Roaming/Sublime Text 3/Packages/Markdown Preview/MarkdownPreview.sublime-settings",
 		"/C/Users/ariel.zusman/Downloads/fbChatSource/public/ajax/get_messages.php",
-		"/C/xampp/htdocs/www.chat.io/src/core/ChatLog.php",
 		"/C/Users/ariel.zusman/Downloads/fbChatSource/core/FbChatMock.php",
 		"/C/xampp/htdocs/www.chat.io/src/core/Controller.php",
-		"/C/xampp/htdocs/www.chat.io/src/core/App.php",
 		"/C/xampp/htdocs/www.chat.io/Vagrantfile",
-		"/C/xampp/htdocs/www.chat.io/src/public/js/main.js",
-		"/C/xampp/htdocs/www.chat.io/src/core/DB.php",
-		"/C/xampp/htdocs/logger.dev/classes/DB.php",
 		"/C/xampp/htdocs/logger.dev/classes/Validate.php",
 		"/C/xampp/htdocs/www.chat.io/provision/setup.sh",
 		"/C/xampp/htdocs/www.chat.io/.gitignore",
 		"/C/xampp/htdocs/www.chat.io/provision/chat.conf",
 		"/C/xampp/htdocs/www.chat.io/provision/chatServer.conf",
-		"/C/xampp/htdocs/www.chat.io/src/core/init.php",
-		"/C/xampp/htdocs/www.chat.io/src/public/index.php",
 		"/C/xampp/htdocs/www.chat.io/provision/hostfile.conf",
 		"/C/xampp/htdocs/www.chat.io/setup.sh",
 		"/C/xampp/htdocs/www.chat.io/src/core/logs/worker.log",
@@ -609,7 +769,6 @@
 		"/C/xampp/htdocs/www.chat.io/hostfile.conf",
 		"/C/xampp/htdocs/www.chat.io/.vagrant/machines/default/virtualbox/synced_folders",
 		"/C/xampp/htdocs/www.chat.io/public/js/main.js",
-		"/C/xampp/htdocs/www.chat.io/html/index.html",
 		"/C/xampp/htdocs/www.chat.io/provision/config/deamon.conf",
 		"/C/xampp/htdocs/www.chat.io/provision/hostfile",
 		"/C/xampp/apache/conf/httpd.conf",
@@ -635,9 +794,7 @@
 		"/C/xampp/htdocs/PHP-Websockets/users.php",
 		"/C/xampp/htdocs/www.chat.io/public/User.php",
 		"/C/xampp/htdocs/chat.dev/index.php",
-		"/C/xampp/htdocs/chat.dev/app/bootstarp.php",
 		"/C/xampp/htdocs/chat.dev/app/Core/User.php",
-		"/C/xampp/htdocs/chat.dev/app/Core/Router.php",
 		"/C/xampp/htdocs/chat.dev/app/Core/DB.php",
 		"/C/xampp/htdocs/www.chat.io/chatApp/Core/db.php",
 		"/C/xampp/htdocs/www.chat.io/chatApp/models/user.php",
@@ -680,39 +837,15 @@
 		"/C/Users/ariel.zusman/Documents/vagrant-local/chat/chat/application/model/model.php",
 		"/C/Users/ariel.zusman/Documents/vagrant-local/chat/chat/application/libs/helper.php",
 		"/C/xampp/htdocs/logger.dev/classes/Session.php",
-		"/C/xampp/htdocs/logger.dev/classes/Redirect.php",
-		"/C/xampp/htdocs/logger.dev/classes/Cookie.php",
 		"/C/xampp/htdocs/logger.dev/classes/Token.php",
 		"/C/xampp/htdocs/logger.dev/functions/santize.php",
-		"/C/xampp/htdocs/logger.dev/core/init.php",
 		"/C/Users/ariel.zusman/Documents/vagrant-local/chat/chat/application/controller/songs.php",
-		"/C/xampp/htdocs/logger.dev/index.php",
 		"/C/Users/ariel.zusman/Documents/vagrant-local/chat/chat/application/core/controller.php",
 		"/C/Users/ariel.zusman/Documents/vagrant-local/chat/chat/application/controller/home.php",
 		"/C/xampp/htdocs/logger.dev/login.php",
 		"/C/xampp/htdocs/logger.dev/changepassword.php",
 		"/C/xampp/htdocs/logger.dev/update.php",
-		"/C/Users/ariel.zusman/Documents/vagrant-local/chat/chat/public/js/application.js",
-		"/C/Users/ariel.zusman/Documents/vagrant-local/chat/chat/application/view/home/index.php",
-		"/C/Users/ariel.zusman/Documents/vagrant-local/chat/chat/application/view/_templates/header.php",
-		"/C/Users/ariel.zusman/Documents/vagrant-local/chat/chat/public/index.php",
-		"/C/xampp/apache/conf/extra/httpd-vhosts.conf",
-		"/C/Users/ariel.zusman/Documents/vagrant-local/chat/chat/application/core/application.php",
-		"/C/Users/ariel.zusman/Documents/vagrant-local/chat/chat/public/.htaccess",
-		"/C/Users/ariel.zusman/Documents/vagrant-local/chat/chat/.htaccess",
-		"/C/Users/ariel.zusman/Documents/vagrant-local/chat/chat/_vagrant/bootstrap.sh",
-		"/C/Users/ariel.zusman/Documents/vagrant-local/chat/chat/application/config/config.php",
-		"/C/Users/ariel.zusman/Documents/vagrant-local/chat/chat/application/view/_templates/footer.php",
-		"/C/xampp/htdocs/chat.dev/app/inc/newuser.php",
-		"/C/xampp/htdocs/logger.dev/classes/Input.php",
-		"/C/xampp/htdocs/chat.dev/.htaccess",
-		"/C/xampp/htdocs/chat.dev/public/.htaccess",
-		"/C/Users/ariel.zusman/Documents/vagrant-local/chat/myproject/public/.htaccess",
-		"/C/Users/ariel.zusman/Documents/vagrant-local/chat/myproject/public/index.php",
-		"/C/Users/ariel.zusman/Documents/vagrant-local/chat/myproject/.htaccess",
-		"/C/xampp/htdocs/chat.dev/public/js/main.js",
-		"/C/xampp/htdocs/chat.dev/public/index.php",
-		"/C/Users/ariel.zusman/Downloads/demo/php/ajax-follow.php"
+		"/C/Users/ariel.zusman/Documents/vagrant-local/chat/chat/public/js/application.js"
 	],
 	"find":
 	{
@@ -732,6 +865,12 @@
 		"case_sensitive": true,
 		"find_history":
 		[
+			"user",
+			"1",
+			"loginForm",
+			"app",
+			"url",
+			"argument",
 			"getMessages",
 			"public",
 			"protected",
@@ -869,84 +1008,53 @@
 	"groups":
 	[
 		{
-			"selected": 5,
+			"selected": 0,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "src/core/DB.php",
+					"file": "test.txt",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1971,
+						"buffer_size": 1992,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1768,
-								1775
+								672,
+								672
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/PHP/PHP.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
+							"spell_check": true,
+							"syntax": "Packages/MarkdownLight/MarkdownLight.tmLanguage"
 						},
 						"translation.x": 0.0,
-						"translation.y": 495.0,
+						"translation.y": 123.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 4,
+					"stack_index": 0,
 					"type": "text"
 				},
 				{
 					"buffer": 1,
-					"file": "src/core/Server.php",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 6212,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1679,
-								1679
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP/PHP.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 425.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 8,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
 					"file": "src/public/js/main.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1494,
+						"buffer_size": 1231,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								386,
-								386
+								752,
+								752
 							]
 						],
 						"settings":
@@ -956,171 +1064,172 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 229.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 6,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "src/core/App.php",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1438,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1112,
-								1112
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP/PHP.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 196.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 3,
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "test.txt",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 49,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								46,
-								46
-							]
-						],
-						"settings":
-						{
-							"_anf_new": "",
-							"syntax": "Packages/MarkdownEditing/Markdown (Standard).tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 2.0,
+						"translation.y": 202.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 2,
 					"type": "text"
 				},
 				{
-					"buffer": 5,
-					"file": "/C/Users/ariel.zusman/AppData/Roaming/Sublime Text 3/Packages/MarkdownEditing/MultiMarkdown.sublime-settings",
+					"buffer": 2,
+					"file": "src/core/User.php",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2566,
+						"buffer_size": 208,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								105,
-								176
+								45,
+								208
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/JavaScript/JSON.tmLanguage"
+							"syntax": "Packages/Text/Plain text.tmLanguage"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				},
-				{
-					"buffer": 6,
-					"file": "/C/Users/ariel.zusman/AppData/Roaming/Sublime Text 3/Packages/User/MultiMarkdown.sublime-settings",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 76,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								74,
-								74
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JSON.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 7,
-					"file": "src/public/index.php",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 2601,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2540,
-								2540
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP/PHP.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": -0.0,
-						"translation.y": 556.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 7,
 					"type": "text"
 				},
 				{
-					"buffer": 8,
-					"file": "src/core/init.php",
+					"buffer": 3,
+					"file": "src/core/DB.php",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 200,
+						"buffer_size": 2009,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								193,
-								193
+								1200,
+								1403
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 7035.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 8,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "src/public/index.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2446,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								522,
+								522
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "src/core/test.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 368,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								367,
+								367
+							]
+						],
+						"settings":
+						{
+							"_anf_new": "",
+							"syntax": "Packages/PHP/PHP.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 107.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "/C/Users/ariel.zusman/AppData/Roaming/Sublime Text 3/Packages/php-grammar/README.md",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 6807,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								4908,
+								4908
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/MarkdownEditing/Markdown.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 2720.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "src/core/ChatApp.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1525,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								321,
+								321
 							]
 						],
 						"settings":
@@ -1128,10 +1237,134 @@
 							"syntax": "Packages/PHP/PHP.tmLanguage"
 						},
 						"translation.x": 0.0,
+						"translation.y": 755.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 704,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								352,
+								402
+							]
+						],
+						"settings":
+						{
+							"auto_indent": false,
+							"syntax": "Packages/Text/Plain text.tmLanguage",
+							"tab_width": 2,
+							"word_wrap": true
+						},
+						"translation.x": 0.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 5,
+					"stack_index": 6,
+					"type": "text"
+				},
+				{
+					"buffer": 9,
+					"file": "src/core/init.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 187,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								184,
+								184
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 11,
+					"type": "text"
+				}
+			]
+		},
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 10,
+					"file": "src/core/Server.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 6267,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3715,
+								3715
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 32277.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 9,
+					"type": "text"
+				},
+				{
+					"buffer": 11,
+					"file": "src/core/websock.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 24097,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								72,
+								80
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 10,
 					"type": "text"
 				}
 			]
@@ -1139,7 +1372,7 @@
 	],
 	"incremental_find":
 	{
-		"height": 23.0
+		"height": 24.0
 	},
 	"input":
 	{
@@ -1154,11 +1387,18 @@
 				0,
 				1,
 				1
+			],
+			[
+				1,
+				0,
+				2,
+				1
 			]
 		],
 		"cols":
 		[
 			0.0,
+			0.9,
 			1.0
 		],
 		"rows":
@@ -1172,6 +1412,10 @@
 	{
 		"height": 0.0
 	},
+	"output.markdown":
+	{
+		"height": 106.0
+	},
 	"output.phpfmtintrospect":
 	{
 		"height": 106.0
@@ -1184,7 +1428,7 @@
 	"project": "chat.sublime-project",
 	"replace":
 	{
-		"height": 42.0
+		"height": 44.0
 	},
 	"save_all_on_build": true,
 	"select_file":
@@ -1194,8 +1438,76 @@
 		"selected_items":
 		[
 			[
+				"main",
+				"src\\public\\js\\main.js"
+			],
+			[
+				"cha",
+				"src\\core\\ChatApp.php"
+			],
+			[
 				"ma",
 				"src\\public\\js\\main.js"
+			],
+			[
+				"inde",
+				"src\\public\\index.php"
+			],
+			[
+				"te",
+				"src\\core\\test.php"
+			],
+			[
+				"c",
+				"src\\core\\ChatApp.php"
+			],
+			[
+				"tes",
+				"src\\core\\test.php"
+			],
+			[
+				"test",
+				"test.html"
+			],
+			[
+				"ch",
+				"src\\core\\ChatApp.php"
+			],
+			[
+				"us",
+				"src\\core\\User.php"
+			],
+			[
+				"web",
+				"src\\core\\websock.php"
+			],
+			[
+				"ser",
+				"src\\core\\Server.php"
+			],
+			[
+				"text",
+				"test.txt"
+			],
+			[
+				"app",
+				"src\\core\\App.php"
+			],
+			[
+				"in",
+				"src\\core\\init.php"
+			],
+			[
+				"db",
+				"src\\core\\DB.php"
+			],
+			[
+				"u",
+				"src\\core\\User.php"
+			],
+			[
+				"serv",
+				"src\\core\\Server.php"
 			],
 			[
 				"chat",
@@ -1206,24 +1518,12 @@
 				"src\\core\\init.php"
 			],
 			[
-				"db",
-				"src\\core\\DB.php"
-			],
-			[
-				"app",
-				"src\\core\\App.php"
-			],
-			[
 				"a",
 				"src\\core\\App.php"
 			],
 			[
 				".gi",
 				".gitignore"
-			],
-			[
-				"main",
-				"src\\public\\js\\main.js"
 			],
 			[
 				"hos",
@@ -1282,16 +1582,8 @@
 				"chatApp\\index.php"
 			],
 			[
-				"cha",
-				"chatApp\\core\\chatServer2.php"
-			],
-			[
 				"boo",
 				"bootsrap.sh"
-			],
-			[
-				"in",
-				"chatApp\\core\\init.php"
 			],
 			[
 				"chats",
@@ -1306,32 +1598,12 @@
 				"public\\index.php"
 			],
 			[
-				"u",
-				"public\\User.php"
-			],
-			[
-				"web",
-				"public\\websock.php"
-			],
-			[
 				"char",
 				"public\\chatServer.php"
 			],
 			[
-				"ser",
-				"public\\server.php"
-			],
-			[
 				"mian",
 				"public\\js\\main.js"
-			],
-			[
-				"serv",
-				"public\\server.php"
-			],
-			[
-				"inde",
-				"public\\index.php"
 			],
 			[
 				"tets",
@@ -1546,7 +1818,7 @@
 	"show_minimap": false,
 	"show_open_files": false,
 	"show_tabs": true,
-	"side_bar_visible": true,
+	"side_bar_visible": false,
 	"side_bar_width": 262.0,
 	"status_bar_visible": true,
 	"template_settings":

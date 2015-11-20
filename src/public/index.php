@@ -16,10 +16,7 @@
             <a href="#" class="btn btn--logout">green</a>
         </nav>
         <ul class="users">
-           <li class="user__item userID-45">ArielZ</li>
-           <li class="user__item userID-50 is-online">Moshe</li>
-           <li class="user__item userID-5 has-newMessage">Dani</li>
-           <li class="user__item userID-47">Sage</li>
+           <!-- <li class="user__item userID-5 has-newMessage">Dani</li> -->
         </ul>
         <div class="conversation">
             <div class="message-wrap">
@@ -60,6 +57,14 @@
             <input type="text" name="username" value="" id="username">
             <input class="btn btn--login" type="submit" value="Login">
         </form>
+
+        <form action="" method="post" class="sendMsg">
+            <label for="message"></label>
+            <input type="text" name="message" value="" id="message">
+            <input class="btn btn--login" type="submit" value="send">
+        </form>
+
+
 
     </main>
 

@@ -1,18 +1,24 @@
 <?php
 /**
- * 
+ *
  */
 
 // require_once 'DB.php';
 class User
 {
-	public $socketID,
-				$username;
+	public 	$username,
+			$userID;
 
-	function __construct($username, $socketID)
+	protected $socketID;
+
+	function __construct($username, $userID, $socketID)
 	{
 		$this->username = $username;
+		$this->userID = $userID;
 		$this->socketID = $socketID;
 	}
-	
+
+	function getSocketID(){
+		return $this->socketID;
+	}
 }

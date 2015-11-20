@@ -156,13 +156,15 @@ ul {
     background-color: #F4F4F4;
     float: right;
 }
-
+.sendMsg,
 .loginForm {
     float: left;
     clear: both;
     margin-top: 25px;
 }
-
+.sendMsg {
+    display: none;
+}
 /*styling for buttons*/
 
 .btn {

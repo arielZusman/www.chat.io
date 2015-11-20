@@ -1,7 +1,7 @@
-<?php 
+<?php
 
 /**
-* 	
+*
 */
 class ChatApp extends Server
 {
@@ -9,8 +9,10 @@ class ChatApp extends Server
 			$readSock;
 
 	public function __construct($db){
-		parent::__construct("127.0.0.1", 5000);
-		$this->db;
+		$this->db = $db;
+        parent::__construct("127.0.0.1", 5000);
+
+
 	}
 
 	public function setLastMsg($readSock, $lastMsg){
@@ -31,24 +33,54 @@ class ChatApp extends Server
 			call_user_func_array([$this, $method], $params);
 		}
 
-		
+
 
     }
 
     /**
      * Login or register user and then add to users array
-     * @param  string $username 
+     * @param  string $username
      * @return boolean t
-     * 
+     *
      * @todo Check if user is in users
      * @todo register user in users table
      */
     public function login($username)
     {
-    	
-    	$this->users[] = new User($username, $this->readSock);
-    	echo 'Login: ' . $username;
-    	print_r($this->users);
+    	// update user as loged in db
+    	$query = "UPDATE users
+                SET session = 1
+                WHERE username = ?";
+
+        $this->db->query($query, array($username));
+
+        if ($this->db->count() > 0) {
+            // get user data
+            $query = "SELECT * FROM users WHERE username = ? LIMIT 1";
+            $this->db->query($query, array($username));
+
+            $user = $this->db->results()[0];
+
+            //create a new user object and it to active users array
+
+            $user = new User($user->username, $user->id, $this->readSock);
+
+            $this->updateUsers('add', $user);
+
+            echo 'Login: ' . $username . "\n";
+
+            //send user data to browser
+            $msg = array (
+                    'login' => 'success',
+                    'username' => $user->username,
+                    'userID' => $user->userID
+                    );
+            $this->send($this->readSock,json_encode($msg));
+        }
+
+
+
+
     }
 
     public function logout($username)
@@ -59,17 +91,53 @@ class ChatApp extends Server
 
     	var_dump($this->users[0]);
 
-    	
+
     	echo 'Logout: ' . $username;
     }
 
     public function sendTo($username, $msg)
     {
 		var_dump($this->users);
-		$user = array_filter($this->users, function($val){
-    		return ($val->username == $username) ? true : false;
-    	});
-    	var_dump($user);
-    	// $this->send($user[0]->socketID, $msg);
+		foreach ($this->users as $user) {
+			if ($user->username == $username) {
+				$sendTo = $user;
+				break;
+			}
+		}
+    	var_dump($sendTo);
+    	$this->send($sendTo->socketID, $msg);
+    }
+
+    /**
+     * updates the users array and send an updated user list to all clients
+     */
+    public function updateUsers($action = '', User $user)
+    {
+        if ($action == 'add') {
+            $this->users[] = $user;
+        }
+        $msg = array();
+        foreach ($this->users as $user) {
+            $msg[] = get_object_vars($user);
+        }
+
+
+        $msg = json_encode($msg);
+        var_dump($msg);
+        foreach ($this->users as $user) {
+            $this->send($user->getSocketID(), $msg);
+        }
+
+
+
+    }
+    /**
+     * get users that have active connection to the server
+     * @return [type] [description]
+     */
+    public function getOnlineUsers()
+    {
+    	$users;
+    	// $this->send($this->readSock,)
     }
 }

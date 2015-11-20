@@ -1,3 +1,4 @@
+
 // Global vars for testing
 var wsT;
 function updateUserList(users) {
@@ -15,16 +16,12 @@ function updateUserList(users) {
 }
 $(document).ready(function() {
     "use strict";
-    // var wsUrl = "ws://127.0.0.1:5000/chatServer2.php";    
+    // var wsUrl = "ws://127.0.0.1:5000/chatServer2.php";
     var wsUrl = "ws://www.chat.io:5000/src/core/chatServer2.php";
     var ws = new WebSocket(wsUrl);
     wsT = ws;
     ws.onopen = function(evt) {
-        console.log(ws);
-        // var msg = JSON.stringify({
-        //     action: 'getOnlineUsers',
-        //     msg: ''
-        // });
+        // var msg = JSON.stringify(['login',$('#username').val()]);
         // ws.send(msg);
     };
     ws.onclose = function(evt) {
@@ -32,7 +29,15 @@ $(document).ready(function() {
         console.log('Closed');
     };
     ws.onmessage = function(evt) {
-        console.log(evt.data);        
+        console.log(evt.data);
+        var msg =  JSON.parse(evt.data);
+
+        //
+        if ( msg.login == 'success') {
+            $('.loginForm').hide();
+            $('.sendMsg').show().find('label').html(msg.username);
+
+        }
     };
     ws.onerror = function(evt) {
         console.log(evt);

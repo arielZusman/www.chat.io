@@ -43,4 +43,17 @@ solution: pass in the connection object:
     k
 ## why do i need a controller class ?
     * less dependency 
-    * 
+
+
+   possible chat actions:
+   user/login/name
+   user/send/name/msg
+   chatApp/getActive users
+
+   user1 | user2 | message | timestamp
+   1        2       hi          23
+   1        2       what ?      25
+   2
+
+   select * from conversation where (user_one = '2' and user_two = '10') or (user_one = '10' and user_two = '2') order by timestamp
+   insert into conversation (user_one,user_two,message)  values(1,2,'hii ther') 
