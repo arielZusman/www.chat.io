@@ -13,6 +13,11 @@ abstract class Server
                 $users = array(),
                 $lastMsg;
 
+    /**
+     * create socket server and wait for connections
+     * @param string  $address ip
+     * @param integer $port    port
+     */
     function __construct($address = "127.0.0.1", $port = 5000)
     {
 
@@ -35,6 +40,7 @@ abstract class Server
 
         echo "Socket listen OK \n";
         echo "Waiting for incoming connections... \n";
+        //Start the main loop to listen to incoming connections
         $this->main();
     }
 
@@ -64,6 +70,12 @@ abstract class Server
         return $headerArr;
     }
 
+    /**
+     * Preform the socket handshake
+     * @param  socket $client socket resource
+     * @param  array  $buffer header sent by the client parsed as array
+     * @return boolean        true on success
+     */
     private function handshake($client, $buffer)
     {
         $response = "";
@@ -84,9 +96,9 @@ abstract class Server
     }
 
     /**
-     * [unmask description]
-     * @param  [type] $text [description]
-     * @return [type]       [description]
+     * Unmask the data sent by the browser
+     * @param  string $text from browser
+     * @return string       unmasked text
      */
     private function unmask($text)
     {
@@ -109,9 +121,9 @@ abstract class Server
     }
 
     /**
-     * [mask description]
-     * @param  [type] $text [description]
-     * @return [type]       [description]
+     * Mask the text before sending it to the browser
+     * @param  string $text plain text
+     * @return string       masked text to send to the browser
      */
     private function mask($text)
     {
@@ -127,15 +139,30 @@ abstract class Server
         return $header . $text;
     }
 
+    /**
+     * send message to the browser
+     * @param  socket $sendTo socket resource id
+     * @param  string $msg    message to send as text
+     * @return int            number of bytes sent or FALSE on error
+     *
+     * number of bytes returned could be 0 there for check false with ===
+     */
     protected function send($sendTo, $msg)
     {
         $msg = $this->mask($msg);
-        socket_write($sendTo, $msg, strlen($msg));
+        return socket_write($sendTo, $msg, strlen($msg));
     }
 
     /**
-     * [main description]
-     * @return [type] [description]
+     * handle the message sent by the browser
+     * @param socket $read_sock socket resource
+     * @param string $lastMsg   the last message sent by the browser
+     */
+    abstract protected function setLastMsg($read_sock, $lastMsg);
+
+    /**
+     * main loop to listen for socket connections
+     * 
      */
     public function main()
     {
@@ -193,8 +220,6 @@ abstract class Server
             } // end of reading foreach
 
         }
-    }
-
-    abstract protected function setLastMsg($read_sock, $lastMsg);
+    }    
 
 }

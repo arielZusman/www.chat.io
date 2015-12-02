@@ -1,20 +1,30 @@
 <?php
 
 /**
-*
+* 
 */
 class ChatApp extends Server
 {
 	public 	$db,
 			$readSock;
 
-	public function __construct($db){
+	/**
+     * start the server
+     * 
+     */
+    public function __construct($db){
 		$this->db = $db;
         parent::__construct("127.0.0.1", 5000);
 
 
 	}
 
+    /**
+     * simple controller to handle the message sent by the browser
+     * message is sent by the browser as an array [method, param1, param2 ]
+     * @param socket $readSock socket resource id
+     * @param string $lastMsg  the message recived from the browser
+     */
 	public function setLastMsg($readSock, $lastMsg){
         $this->lastMsg = $lastMsg;
         $this->readSock = $readSock;
@@ -27,18 +37,15 @@ class ChatApp extends Server
 				$method = $action[0];
 				unset($action[0]);
 			}
-
+            // set an array of params
 			$params = $action ? array_values($action) : [];
 
 			call_user_func_array([$this, $method], $params);
 		}
-
-
-
     }
 
     /**
-     * Login or register user and then add to users array
+     * Login or register user in DB and then add to users array
      * @param  string $username
      * @return boolean t
      *
